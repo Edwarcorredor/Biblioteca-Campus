@@ -1,12 +1,12 @@
 import bcrypt from "bcrypt";
-import ModelAuthen from "../models/ModelAuthen.js";
+import Model from "../models/Model.js";
 
 const login = async ({email, password}) => {
     try {
         if (!email || !password){
             return { status: 400, message: "Faltan datos" };
         }
-        const user = await ModelAuthen.login(email);
+        const user = await Model.login(email);
 
         if (!user){
             return { status: 400, message: "Usuario no encontrado" };

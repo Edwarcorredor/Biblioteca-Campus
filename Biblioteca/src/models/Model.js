@@ -3,7 +3,7 @@ import conexion from "../config/atlas.js";
 const db = await conexion();
 
 
-export default class ModelAuthen {
+export default class Model {
 
     /**
      ** Funcion para verificar si existe el vendedor con ese correo

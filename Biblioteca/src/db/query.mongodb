@@ -1,0 +1,182 @@
+/* eslint-disable no-undef */
+use("biblioteca_Edwar_Corredor");
+db.createCollection("libros", {
+    validator: {
+      $jsonSchema: {
+        bsonType: "object",
+        required: ["titulo", "autor", "genero", "anioPublicacion", "isbn", "descripcion", "disponibilidad"],
+        properties: {
+          titulo: { 
+            bsonType: "string",
+            description: "Titulo del libro"},
+          autor: { 
+            bsonType: "string",
+            description: "Autor del libro" },
+          genero: { 
+            bsonType: "string",
+            description: "Genero del libro" },
+          anioPublicacion: { 
+            bsonType: "int",
+            description: "Año de publicacion del libro" },
+          isbn: { 
+            bsonType: "string",
+            description: "isbn del libro" },
+          descripcion: { 
+            bsonType: "string",
+            description: "Descripción del libro" },
+          disponibilidad: { 
+            bsonType: "bool",
+            description: "Disponibilidad del libro" },
+        }
+      }
+    }
+  });
+  
+// Crear la colección de Autores
+db.createCollection("autores", {
+    validator: {
+        $jsonSchema: {
+        bsonType: "object",
+        required: ["nombre", "biografia", "nacionalidad", "fechaNacimiento"],
+        properties: {
+            nombre: { 
+                bsonType: "string",
+                description:"Nombre del autor" },
+            biografia: { 
+                bsonType: "string",
+                description: "Biografia del autor" },
+            nacionalidad: { 
+                bsonType: "string",
+                description: "Nacionalidad del autor" },
+            fechaNacimiento: { 
+                bsonType: "date",
+                description: "Fecha Nacimiento del autor" },
+        }
+        }
+    }
+});
+
+// Crear la colección de Usuarios
+db.createCollection("usuarios", {
+    validator: {
+        $jsonSchema: {
+        bsonType: "object",
+        required: ["nombre", "email", "password", "telefono", "roles"],
+        properties: {
+            nombre: { 
+                bsonType: "string",
+                description: "Nombre de Usuario"},
+            email: { 
+                bsonType: "string",
+                description: "Email del usuario" },
+            password: { 
+                bsonType: "string",
+                description: "Password del usuario"},
+            telefono: { 
+                bsonType: "string",
+                description: "Telefono del usuario"},
+            roles: { 
+                bsonType: "array",
+                items: {
+                    bsonType:"string",
+                    description: "Rol del usuario"
+                } },
+        }
+        }
+    }
+});
+
+// Crear la colección de Préstamos
+db.createCollection("prestamos", {
+    validator: {
+        $jsonSchema: {
+        bsonType: "object",
+        required: ["usuarioId", "libroId", "fechaInicio", "fechaDevolucionPrevista"],
+        properties: {
+            usuarioId: { 
+                bsonType: "int",
+                description: "Identificador del usuario" },
+            libroId: { 
+                bsonType: "int",
+                description: "Identificador del libro" },
+            fechaInicio: { 
+                bsonType: "date",
+                description: "Fecha Inicio del prestamo"},
+            fechaDevolucionPrevista: { 
+                bsonType: "date",
+                description: "Fecha de devolución del prestamo" }
+        }
+        }
+    }
+});
+
+// Crear la colección de Reservas
+db.createCollection("reservas", {
+    validator: {
+        $jsonSchema: {
+        bsonType: "object",
+        required: ["usuarioId", "libroId", "fechaReserva"],
+        properties: {
+            usuarioId: { 
+                bsonType: "int",
+                description: "Identificador del usuario" },
+            libroId: { 
+                bsonType: "int",
+                description: "Identificador del libro" },
+            fechaReserva: { 
+                bsonType: "date",
+                description: "Fecha de reserva del libro" }
+        }
+        }
+    }
+});
+
+// Crear la colección de Categorías
+db.createCollection("categorias", {
+validator: {
+    $jsonSchema: {
+    bsonType: "object",
+    required: ["nombre", "descripcion"],
+    properties: {
+        nombre: { 
+            bsonType: "string",
+            description: "Nombre de la categoria" },
+        descripcion: { 
+            bsonType: "string",
+            description: "Descripción de la categoria" },
+    }
+    }
+}
+});
+
+
+// Crear la colección de Editoriales
+db.createCollection("editoriales", {
+    validator: {
+      $jsonSchema: {
+        bsonType: "object",
+        required: ["nombre", "ubicacion", "contacto"],
+        properties: {
+          nombre: { 
+            bsonType: "string",
+            description: "Nombre de la editorial" },
+          ubicacion: { 
+            bsonType: "string",
+            description: "Ubicación de la editorial" },
+          contacto: {
+            bsonType: "object",
+            properties: {
+              telefono: { 
+                bsonType: "string",
+                description: "Telefono de la editorial" },
+              email: { 
+                bsonType: "string",
+                description: "Email de la editorial" }
+            }
+          },
+        }
+      }
+    }
+  });
+  
+  

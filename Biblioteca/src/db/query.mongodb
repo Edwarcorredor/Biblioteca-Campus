@@ -1,182 +1,154 @@
 /* eslint-disable no-undef */
-use("biblioteca_Edwar_Corredor");
-db.createCollection("libros", {
-    validator: {
-      $jsonSchema: {
-        bsonType: "object",
-        required: ["titulo", "autor", "genero", "anioPublicacion", "isbn", "descripcion", "disponibilidad"],
-        properties: {
-          titulo: { 
-            bsonType: "string",
-            description: "Titulo del libro"},
-          autor: { 
-            bsonType: "string",
-            description: "Autor del libro" },
-          genero: { 
-            bsonType: "string",
-            description: "Genero del libro" },
-          anioPublicacion: { 
-            bsonType: "int",
-            description: "Año de publicacion del libro" },
-          isbn: { 
-            bsonType: "string",
-            description: "isbn del libro" },
-          descripcion: { 
-            bsonType: "string",
-            description: "Descripción del libro" },
-          disponibilidad: { 
-            bsonType: "bool",
-            description: "Disponibilidad del libro" },
-        }
-      }
-    }
-  });
-  
-// Crear la colección de Autores
-db.createCollection("autores", {
-    validator: {
-        $jsonSchema: {
-        bsonType: "object",
-        required: ["nombre", "biografia", "nacionalidad", "fechaNacimiento"],
-        properties: {
-            nombre: { 
-                bsonType: "string",
-                description:"Nombre del autor" },
-            biografia: { 
-                bsonType: "string",
-                description: "Biografia del autor" },
-            nacionalidad: { 
-                bsonType: "string",
-                description: "Nacionalidad del autor" },
-            fechaNacimiento: { 
-                bsonType: "date",
-                description: "Fecha Nacimiento del autor" },
-        }
-        }
-    }
-});
-
-// Crear la colección de Usuarios
-db.createCollection("usuarios", {
-    validator: {
-        $jsonSchema: {
-        bsonType: "object",
-        required: ["nombre", "email", "password", "telefono", "roles"],
-        properties: {
-            nombre: { 
-                bsonType: "string",
-                description: "Nombre de Usuario"},
-            email: { 
-                bsonType: "string",
-                description: "Email del usuario" },
-            password: { 
-                bsonType: "string",
-                description: "Password del usuario"},
-            telefono: { 
-                bsonType: "string",
-                description: "Telefono del usuario"},
-            roles: { 
-                bsonType: "array",
-                items: {
-                    bsonType:"string",
-                    description: "Rol del usuario"
-                } },
-        }
-        }
-    }
-});
-
-// Crear la colección de Préstamos
-db.createCollection("prestamos", {
-    validator: {
-        $jsonSchema: {
-        bsonType: "object",
-        required: ["usuarioId", "libroId", "fechaInicio", "fechaDevolucionPrevista"],
-        properties: {
-            usuarioId: { 
-                bsonType: "int",
-                description: "Identificador del usuario" },
-            libroId: { 
-                bsonType: "int",
-                description: "Identificador del libro" },
-            fechaInicio: { 
-                bsonType: "date",
-                description: "Fecha Inicio del prestamo"},
-            fechaDevolucionPrevista: { 
-                bsonType: "date",
-                description: "Fecha de devolución del prestamo" }
-        }
-        }
-    }
-});
-
-// Crear la colección de Reservas
-db.createCollection("reservas", {
-    validator: {
-        $jsonSchema: {
-        bsonType: "object",
-        required: ["usuarioId", "libroId", "fechaReserva"],
-        properties: {
-            usuarioId: { 
-                bsonType: "int",
-                description: "Identificador del usuario" },
-            libroId: { 
-                bsonType: "int",
-                description: "Identificador del libro" },
-            fechaReserva: { 
-                bsonType: "date",
-                description: "Fecha de reserva del libro" }
-        }
-        }
-    }
-});
-
-// Crear la colección de Categorías
-db.createCollection("categorias", {
-validator: {
+use("library_Edwar_Corredor");
+db.createCollection("users", {
+  validator: {
     $jsonSchema: {
-    bsonType: "object",
-    required: ["nombre", "descripcion"],
-    properties: {
-        nombre: { 
-            bsonType: "string",
-            description: "Nombre de la categoria" },
-        descripcion: { 
-            bsonType: "string",
-            description: "Descripción de la categoria" },
-    }
-    }
-}
-});
-
-
-// Crear la colección de Editoriales
-db.createCollection("editoriales", {
-    validator: {
-      $jsonSchema: {
-        bsonType: "object",
-        required: ["nombre", "ubicacion", "contacto"],
-        properties: {
-          nombre: { 
-            bsonType: "string",
-            description: "Nombre de la editorial" },
-          ubicacion: { 
-            bsonType: "string",
-            description: "Ubicación de la editorial" },
-          contacto: {
-            bsonType: "object",
-            properties: {
-              telefono: { 
-                bsonType: "string",
-                description: "Telefono de la editorial" },
-              email: { 
-                bsonType: "string",
-                description: "Email de la editorial" }
-            }
-          },
+      bsonType: "object",
+      required: ["name", "email", "phone", "address", "idNumber"],
+      properties: {
+        name: {
+          bsonType: "string",
+          description: "User's name"
+        },
+        email: {
+          bsonType: "string",
+          description: "User's email"
+        },
+        phone: {
+          bsonType: "string",
+          description: "User's phone number"
+        },
+        address: {
+          bsonType: "string",
+          description: "User's address"
+        },
+        idNumber: {
+          bsonType: "string",
+          description: "User's ID number"
         }
       }
     }
-  });
-  
-  
+  }
+});
+
+db.createCollection("loans", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["userId", "productId", "startDate", "endDate", "status"],
+      properties: {
+        userId: {
+          bsonType: "int",
+          description: "ID of the user who made the loan"
+        },
+        productId: {
+          bsonType: "int",
+          description: "ID of the borrowed product"
+        },
+        startDate: {
+          bsonType: "date",
+          description: "Start date of the loan"
+        },
+        endDate: {
+          bsonType: "date",
+          description: "End date of the loan"
+        },
+        status: {
+          bsonType: "string",
+          description: "Loan status (active, expired, returned)",
+          enum: ["active", "expired", "returned"]
+        }
+      }
+    }
+  }
+});
+
+db.createCollection("reservations", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["userId", "productId", "reservationDate", "status"],
+      properties: {
+        userId: {
+          bsonType: "int",
+          description: "ID of the user who made the reservation"
+        },
+        productId: {
+          bsonType: "int",
+          description: "ID of the reserved product"
+        },
+        reservationDate: {
+          bsonType: "date",
+          description: "Reservation date"
+        },
+        status: {
+          bsonType: "string",
+          description: "Reservation status (pending, confirmed, canceled)",
+          enum: ["pending", "confirmed", "canceled"]
+        }
+      }
+    }
+  }
+});
+
+db.createCollection("inventory", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["productId", "quantity", "status", "entryDate", "supplier"],
+      properties: {
+        productId: {
+          bsonType: "int",
+          description: "ID of the product in inventory"
+        },
+        quantity: {
+          bsonType: "int",
+          description: "Quantity available in inventory"
+        },
+        status: {
+          bsonType: "string",
+          description: "Product status in inventory"
+        },
+        entryDate: {
+          bsonType: "date",
+          description: "Date of entry of the product into inventory"
+        },
+        supplier: {
+          bsonType: "string",
+          description: "Product supplier"
+        }
+      }
+    }
+  }
+});
+
+db.createCollection("products", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["name", "description", "category", "price", "available"],
+      properties: {
+        name: {
+          bsonType: "string",
+          description: "Product name"
+        },
+        description: {
+          bsonType: "string",
+          description: "Product description"
+        },
+        category: {
+          bsonType: "string",
+          description: "Product category"
+        },
+        price: {
+          bsonType: "number",
+          description: "Product price"
+        },
+        available: {
+          bsonType: "bool",
+          description: "Product availability"
+        }       
+      }
+    }
+  }
+});

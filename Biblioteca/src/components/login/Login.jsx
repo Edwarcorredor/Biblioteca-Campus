@@ -13,7 +13,7 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const url = "https://192.10.10.10/envio"
+    const url = "http://127.10.10.10:5030/auth/login"
     const query = Object.fromEntries(new window.FormData(event.target));
     fetch(url, {
       method: "POST", // Método HTTP POST

@@ -4,7 +4,7 @@ db.createCollection("users", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["name", "email", "phone", "address", "idNumber"],
+      required: ["name", "email", "phone", "address", "idNumber", "password", "role"],
       properties: {
         name: {
           bsonType: "string",
@@ -25,6 +25,14 @@ db.createCollection("users", {
         idNumber: {
           bsonType: "string",
           description: "User's ID number"
+        },
+        password:{
+          bsonType: "string",
+          description: "User's password"
+        },
+        role:{
+          bsonType: "string",
+          description: "User's role"
         }
       }
     }
@@ -152,3 +160,13 @@ db.createCollection("products", {
     }
   }
 });
+
+db.createCollection("counters");
+db.counters.insertMany([
+  { _id: "users", seq: 0 },
+  { _id: "loans", seq: 0 },
+  { _id: "reservation", seq: 0 },
+  { _id: "inventory", seq: 0 },
+  {_id: "products", seq: 0 },
+]);
+

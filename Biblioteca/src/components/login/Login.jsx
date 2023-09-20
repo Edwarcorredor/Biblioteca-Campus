@@ -13,8 +13,31 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const url = "https://192.10.10.10/envio"
     const query = Object.fromEntries(new window.FormData(event.target));
-    console.log(query);
+    fetch(url, {
+      method: "POST", // Método HTTP POST
+      headers: {
+        "Content-Type": "application/json", // Tipo de contenido JSON
+        // Otras cabeceras personalizadas si es necesario
+      },
+      body: JSON.stringify(query), // Los datos que deseas enviar en formato JSON
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json(); // Si se espera una respuesta JSON
+      })
+      .then((responseData) => {
+        // Manejar la respuesta exitosa aquí
+        console.log(responseData);
+      })
+      .catch((error) => {
+        // Manejar errores de red o respuestas no exitosas aquí
+        console.error("Error:", error);
+      });
+    
   };
 
   return (

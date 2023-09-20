@@ -1,18 +1,41 @@
-import { Input, Button } from "@nextui-org/react";
+import  { useState } from "react";
+import { Input, Button, Select, SelectItem } from "@nextui-org/react";
 import { EyeFilledIcon } from "../login/EyeFilledIcon.jsx";
 import { EyeSlashFilledIcon } from "../login/EyeSlashFilledIcon.jsx";
-import { useState } from "react";
 
 export default function Register() {
-
   const [isVisible, setIsVisible] = useState(false);
 
-
   const toggleVisibility = () => setIsVisible(!isVisible);
+
+  const roles = [
+    { label: "Admin", value: "admin" },
+    { label: "User", value: "user" },
+  ];
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    const url = "http://127.10.10.10:5030/auth/register";
     const query = Object.fromEntries(new window.FormData(event.target));
-    console.log(query);
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(query),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((responseData) => {
+        console.log(responseData);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
@@ -24,51 +47,70 @@ export default function Register() {
         Register User
       </h1>
 
-        <Input
-            isRequired
-            type="text"
-            label="Name"
-            className="max-w-xs mb-4"
-            placeholder="Name Example"
-            variant="bordered"
-        />    
-        <Input
-            isRequired
-            type="number"
-            label="Phone"
-            className="max-w-xs mb-4"
-            placeholder="123456789"
-            variant="bordered"
-            min="0"
-        />
-        <Input
-            isRequired
-            type="text"
-            label="Address"
-            className="max-w-xs mb-4"
-            placeholder="Cra 123 #45-67"
-            variant="bordered"
-        />
-        <Input
-            isRequired
-            type="number"
-            label="DNI"
-            className="max-w-xs mb-4"
-            placeholder="123456789"
-            variant="bordered"
-            min="0"
-        /> 
-        <Input
-            isRequired
-            type="email"
-            label="Email"
-            className="max-w-xs mb-4"
-            placeholder="Email@example.com"
-            variant="bordered"
-        />
+      <Input
+        isRequired
+        type="text"
+        name="name_user"
+        label="Name"
+        className="max-w-xs mb-4"
+        placeholder="Name Example"
+        variant="bordered"
+      />
+      <Input
+        isRequired
+        name="phone_user"
+        type="number"
+        label="Phone"
+        className="max-w-xs mb-4"
+        placeholder="123456789"
+        variant="bordered"
+        min="0"
+      />
+      <Input
+        isRequired
+        name="address_user"
+        type="text"
+        label="Address"
+        className="max-w-xs mb-4"
+        placeholder="Cra 123 #45-67"
+        variant="bordered"
+      />
+      <Input
+        isRequired
+        name="DNI_user"
+        type="number"
+        label="DNI"
+        className="max-w-xs mb-4"
+        placeholder="123456789"
+        variant="bordered"
+        min="0"
+      />
+      <Select
+        isRequired
+        label="Role"
+        name="role_user"
+        placeholder="Select a role"
+        variant="bordered"
+        className="max-w-xs mb-4"
+      >
+        {roles.map((role) => (
+          <SelectItem key={role.value} value={role.value}>
+            {role.label}
+          </SelectItem>
+        ))}
+      </Select>
+      <Input
+        isRequired
+        name="email_user"
+        type="email"
+        label="Email"
+        className="max-w-xs mb-4"
+        placeholder="Email@example.com"
+        variant="bordered"
+      />
       <Input
         key="password"
-        name="password"
+        name="password_user"
         label="Password"
         variant="bordered"
         isRequired
@@ -90,7 +132,7 @@ export default function Register() {
         className="max-w-xs mb-4"
       />
       <Button color="primary" variant="shadow" type="submit">
-        Login
+        Register
       </Button>
     </form>
   );

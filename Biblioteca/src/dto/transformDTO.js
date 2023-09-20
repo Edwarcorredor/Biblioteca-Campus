@@ -1,10 +1,12 @@
 const mapping = {
-    user: {
-        nombre_usuario: "nombre",
-        email_usuario: "email",
-        password_usuario: "password",
-        telefono_usuario: "telefono",
-        roles_usuario: "roles"
+    users: {
+        name_user: "name",
+        email_user: "email",
+        password_user: "password",
+        phone_user: "phone",
+        role_user: "role",
+        DNI_user: "idNumber",
+        address_user: "address"
     }
 }  
     

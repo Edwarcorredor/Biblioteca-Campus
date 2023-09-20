@@ -1,6 +1,6 @@
-import ModelUser from "../models/ModelUser.js";
+/*import ModelUser from "../models/ModelUser.js";
 import {userShema} from "../dto/modelDTO.js";
-import funMapping from "../dto/transformDTO.js";
+import funMapping from "../dto/transformDTO.js";*/
 import  login from "../helpers/authen.js";
 import { crearToken } from "../config/jwt.js";
 
@@ -17,7 +17,7 @@ class ControllerUser {
         next(error);
     }
 }
-  
+  /*
   static async getUser(req, res) {
     const {sub} = req.user
     res.json(await ModelUser.getUser(sub));
@@ -56,7 +56,7 @@ class ControllerUser {
     const {sub} = req.user
     const result = await ModelUser.deleteUser(sub);
     res.json(result);
-  }
+  }*/
 }
 
 export default ControllerUser;

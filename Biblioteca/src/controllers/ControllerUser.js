@@ -10,8 +10,8 @@ class ControllerUser {
   static async loginUser(req, res, next) {
     try {
         const user = await login(req.body);
-        if (user.status){
-          throw { status: 400, message: "Usuario no encontrado" };
+        if (!user._id){
+          throw new Error(user);
         }    
         const token = await crearToken(user);
         res.status(200).json({ JWT:token, Info:"Usuario logueado correctamente." });

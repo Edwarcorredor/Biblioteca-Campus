@@ -25,7 +25,7 @@ export default function Login() {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error(response);
         }
         return response.json(); // Si se espera una respuesta JSON
       })
@@ -35,7 +35,7 @@ export default function Login() {
       })
       .catch((error) => {
         // Manejar errores de red o respuestas no exitosas aquí
-        console.error("Error:", error);
+        console.error(...error);
       });
     
   };

@@ -6,7 +6,7 @@ const login = async ({email, password}) => {
         if (!email || !password){
             return { status: 400, message: "Faltan datos" };
         }
-        const user = await Model.login(email);
+        const user = await Model.loginUser(email);
         
         if (!user){
             return { status: 400, message: "Usuario no encontrado" };

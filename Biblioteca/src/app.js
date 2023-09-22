@@ -12,7 +12,6 @@ app.use('/auth', authRouter)
 
 
 
-
 // eslint-disable-next-line no-undef
 let config = JSON.parse(process.env.MY_SERVER);
 app.listen(config, () => {

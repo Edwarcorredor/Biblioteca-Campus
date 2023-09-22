@@ -86,6 +86,6 @@ export default class Model {
         }
     }
 
-
+    
 
 }

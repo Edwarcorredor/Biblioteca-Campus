@@ -1,5 +1,5 @@
 import Login from './components/login/Login.jsx';
-import Register from './components/register/Register.jsx';
+//import Register from './components/register/Register.jsx';
 import './index.css'
 
 export default function App(){

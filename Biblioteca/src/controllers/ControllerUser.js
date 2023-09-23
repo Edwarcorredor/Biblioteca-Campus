@@ -7,15 +7,17 @@ import { crearToken } from "../config/jwt.js";
 
 class ControllerUser {
 
-  static async loginUser(req, res, next) {
+  static async loginUser(req, res) {
     try {
         const user = await login(req.body);
-        if (!user)
-            throw { status: 400, message: "Usuario no encontrado" };
+        if (!user._id){
+          throw new Error(user);
+        }    
         const token = await crearToken(user);
         res.status(200).json({ JWT:token, Info:"Usuario logueado correctamente." });
-    } catch (error) {
-        next(error);
+    } catch (err) {
+      console.log(err.message);
+      res.status(400).json({ error: err.message });
     }
   }
   static async registerUser(req, res) {

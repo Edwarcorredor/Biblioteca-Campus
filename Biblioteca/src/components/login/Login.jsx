@@ -3,42 +3,45 @@ import { EyeFilledIcon } from "./EyeFilledIcon.jsx";
 import { EyeSlashFilledIcon } from "./EyeSlashFilledIcon.jsx";
 import  useLogin  from "../../hooks/useLogin.js";
 
-export default function Login() {
-  const {
-    setEmail,
-    isVisible,
-    toggleVisibility,
-    isInvalid,
-  } = useLogin();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const url = "http://127.10.10.10:5030/auth/login"
-    const query = Object.fromEntries(new window.FormData(event.target));
-    fetch(url, {
-      method: "POST", // Método HTTP POST
-      headers: {
-        "Content-Type": "application/json", // Tipo de contenido JSON
-        // Otras cabeceras personalizadas si es necesario
-      },
-      body: JSON.stringify(query), // Los datos que deseas enviar en formato JSON
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json(); // Si se espera una respuesta JSON
-      })
-      .then((responseData) => {
-        // Manejar la respuesta exitosa aquí
-        console.log(responseData);
-      })
-      .catch((error) => {
-        // Manejar errores de red o respuestas no exitosas aquí
-        console.error("Error:", error);
-      });
+export default function Login() {
+    const {
+      setEmail,
+      isVisible,
+      toggleVisibility,
+      isInvalid,
+    } = useLogin();
+  
+    const handleSubmit =  (event) => {
+      event.preventDefault();
+      const url = "http://127.10.10.10:5030/auth/login";
+      const query = Object.fromEntries(new window.FormData(event.target));
     
-  };
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(query),
+      })
+        .then(async (response) => {
+          if (!response.ok) {
+            const errorData = await response.json(); // Leer el cuerpo de la respuesta de error
+            throw new Error(errorData); // Utiliza el mensaje de error del servidor
+          }
+          return response.json();
+        })
+        .then((responseData) => {
+          // Manejar la respuesta exitosa aquí
+          console.log(responseData);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+    
+  
+  
 
   return (
     <form

@@ -4,17 +4,17 @@ import Model from "../models/Model.js";
 const login = async ({email, password}) => {
     try {
         if (!email || !password){
-            return { status: 400, message: "Faltan datos" };
+            throw new Error("Faltan datos", 400);
         }
         const user = await Model.loginUser(email);
         
         if (!user){
-            return { status: 400, message: "Usuario no encontrado" };
+            throw new Error("Usuario no encontrado", 400);
         }
             
         const valid = await bcrypt.compare(password, user.password);
         if (!valid){
-            return { status: 400, message: "Contraseña o correo incorrectos" };
+            throw new Error("Contraseña o correo incorrectos", 400);
         }   
         return user;
 

@@ -89,7 +89,6 @@ export default class Model {
         }
     }
 
-<<<<<<< HEAD
     static async insertReservation(datos){
         try{
             const reservationInsert = await Reservations.insertOne({
@@ -111,9 +110,6 @@ export default class Model {
             return error
         }
     }
-=======
-    
->>>>>>> 2809cf91164634d63bc3e6b5508d31f6252c471e
 
     static async insertInventory(datos){
         try{

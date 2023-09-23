@@ -48,6 +48,16 @@ export default class Model {
     /**
      * *Funcion para actualizar la información del usuario
      */
+
+    static async getUser(id){
+        try{
+            const user = await Usuarios.findOne({ _id: id})
+            return user
+        }catch(error){
+            return error
+        }
+    }
+    
     static async updateUser(datos) {
         try{
             const checkEmail = await Usuarios.findOne({ email: datos.email });

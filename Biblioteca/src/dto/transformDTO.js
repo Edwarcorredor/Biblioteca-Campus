@@ -7,6 +7,13 @@ const mapping = {
         role_user: "role",
         DNI_user: "idNumber",
         address_user: "address"
+    },
+    loans: {
+        id_user: "userId",
+        id_product: "productId",
+        dateStart_loan: "startDate",
+        dateEnd_loan: "endDate",
+        status_loan: "status"
     }
 }  
     

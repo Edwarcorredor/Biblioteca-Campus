@@ -26,9 +26,19 @@ const ReservationSchema = z.object({
   status: z.enum(["pending", "confirmed", "canceled"]).description("Reservation status (pending, confirmed, canceled)"),
 });
 
+const InventorySchema = z.object({
+  productId: z.number().int().min(1).description("ID of the product in inventory"),
+  quantity: z.number().int().min(0).description("Quantity available in inventory"),
+  status: z.string().description("Product status in inventory"),
+  entryDate: z.date().description("Date of entry of the product into inventory"),
+  supplier: z.string().description("Product supplier"),
+});
+
+
 
 export {
     userSchema,
     LoanSchema,
-    ReservationSchema
+    ReservationSchema,
+    InventorySchema
 };

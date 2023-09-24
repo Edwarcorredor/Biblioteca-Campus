@@ -20,6 +20,13 @@ const mapping = {
         id_product: "productId",
         date_reservation: "reservationDate",
         status_loan: "status" 
+    },
+    inventory:{
+        id_product: "productId",
+        quantity_inventory: "quantity",
+        status_inventory: "status",
+        entryDate_inventory: "entryDate",
+        supplier_inventory: "supplier"
     }
 }  
     

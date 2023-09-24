@@ -6,3 +6,5 @@ const userRouter = Router();
 userRouter
     .put('/actualizar', ControllerUser.updateUser)
     .get('/obtener', ControllerUser.getUser)
+
+export default userRouter;

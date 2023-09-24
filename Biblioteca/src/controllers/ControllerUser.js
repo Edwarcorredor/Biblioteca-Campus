@@ -1,4 +1,3 @@
-
 import {userSchema} from "../dto/modelDTO.js";
 import funMapping from "../dto/transformDTO.js";
 import Model from "../models/Model.js";
@@ -38,6 +37,21 @@ class ControllerUser {
     const id = req.user._id;
     const user = await Model.getUser(id);
     res.json(user);
+  }
+
+  static async updateUser(req, res) {
+    const id = req.user._id;
+    const validacion = userSchema.safeParse(req.body);
+    if (!validacion.success) {
+      return res.status(400).json({
+        message: validacion.error.errors.map(
+          (error) => `${error.path} - ${error.message}`
+        ),
+      });
+    }
+    const transforUser = funMapping(validacion.data, "users");
+    const userUpdate = await Model.updateUser(id, transforUser);
+    res.json(userUpdate);
   }
 }
 

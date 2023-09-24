@@ -14,6 +14,12 @@ const mapping = {
         dateStart_loan: "startDate",
         dateEnd_loan: "endDate",
         status_loan: "status"
+    },
+    reservations:{
+        id_user: "userId",
+        id_product: "productId",
+        date_reservation: "reservationDate",
+        status_loan: "status" 
     }
 }  
     

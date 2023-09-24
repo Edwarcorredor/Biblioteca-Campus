@@ -2,14 +2,18 @@ import express  from 'express';
 import dotenv from 'dotenv'
 import authRouter from './routes/authRouter.js';
 import cors from 'cors'
+import passportConfig from "./helpers/passportHelpert.js"
 
 dotenv.config();
 const app = express();
 
-app.use(cors());
-app.use(express.json());
-app.use('/auth', authRouter)
-
+app
+  .use(cors())
+  .use(express.json())
+  .use('/auth', authRouter)
+  .use(passportConfig.initialize())
+  .use(passportConfig.authenticate('bearer', { session: false }))
+  .use('/user', )
 
 
 // eslint-disable-next-line no-undef

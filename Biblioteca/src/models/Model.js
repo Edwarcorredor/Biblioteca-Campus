@@ -58,14 +58,14 @@ export default class Model {
         }
     }
     
-    static async updateUser(datos) {
+    static async updateUser(id, datos) {
         try{
             const checkEmail = await Usuarios.findOne({ email: datos.email });
-            if(checkEmail.email !== datos.email || !checkEmail) {
+            if(checkEmail.email !== datos.email && checkEmail) {
                 return "Ya existe el email"
             }
 
-            const filter = { _id: datos._id };
+            const filter = { _id: id };
             datos.password = await hash(datos.password, 10);
             const update = { $set: datos };
             const result = await Usuarios.updateOne(filter, update);
@@ -89,9 +89,9 @@ export default class Model {
         }
     }
 
-    static async updateLoan(datos){
+    static async updateLoan(id, datos){
         try{
-            const filter = { _id:datos._id};
+            const filter = { _id: id};
             const loanUpdate = await Prestamos.updateOne(filter, {$set: {status: datos.status}})
             return loanUpdate
         } catch(error){
@@ -111,9 +111,9 @@ export default class Model {
         }
     }
 
-    static async updateReservation(datos){
+    static async updateReservation(id, datos){
         try{
-            const filter = { _id:datos._id};
+            const filter = { _id: id};
             const reservationUpdate = await Reservations.updateOne(filter, {$set: {status: datos.status}})
             return reservationUpdate
         } catch(error){
@@ -133,9 +133,9 @@ export default class Model {
         }
     }
 
-    static async updateInventory(datos){
+    static async updateInventory(id, datos){
         try{
-            const inventoryUpdate = await Inventory.updateOne({_id: datos._id},
+            const inventoryUpdate = await Inventory.updateOne({_id: id},
                 {$set: {datos}});
             return inventoryUpdate
         }catch(error){
@@ -155,9 +155,9 @@ export default class Model {
         }
     }
 
-    static async updateProduct(datos){
+    static async updateProduct(id, datos){
         try{
-            const productUpdate = await Products.updateOne({_id: datos._id},
+            const productUpdate = await Products.updateOne({_id: id},
                 {$set: {datos}});
             return productUpdate
         }catch(error){

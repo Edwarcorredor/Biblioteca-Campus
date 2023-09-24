@@ -19,8 +19,16 @@ const LoanSchema = z.object({
   status: z.enum(["active", "expired", "returned"]).description("Loan status (active, expired, returned)"),
 });
 
+const ReservationSchema = z.object({
+  userId: z.number().int().min(1).description("ID of the user who made the reservation"),
+  productId: z.number().int().min(1).description("ID of the reserved product"),
+  reservationDate: z.date().description("Reservation date"),
+  status: z.enum(["pending", "confirmed", "canceled"]).description("Reservation status (pending, confirmed, canceled)"),
+});
+
 
 export {
     userSchema,
-    LoanSchema
+    LoanSchema,
+    ReservationSchema
 };

@@ -27,6 +27,13 @@ const mapping = {
         status_inventory: "status",
         entryDate_inventory: "entryDate",
         supplier_inventory: "supplier"
+    },
+    products: {
+        name_product: "name",
+        description_product: "description",
+        category_product: "category",
+        price_product: "price",
+        available_product: "available"
     }
 }  
     

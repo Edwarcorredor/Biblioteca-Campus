@@ -34,11 +34,20 @@ const InventorySchema = z.object({
   supplier: z.string().description("Product supplier"),
 });
 
+const ProductSchema = z.object({
+  name: z.string().description("Product name"),
+  description: z.string().description("Product description"),
+  category: z.string().description("Product category"),
+  price: z.number().description("Product price"),
+  available: z.boolean().description("Product availability"),
+});
+
 
 
 export {
     userSchema,
     LoanSchema,
     ReservationSchema,
-    InventorySchema
+    InventorySchema,
+    ProductSchema
 };

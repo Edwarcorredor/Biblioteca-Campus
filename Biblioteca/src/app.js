@@ -7,6 +7,7 @@ import userRouter from './routes/userRouter.js';
 import loanRouter from './routes/loanRouter.js';
 import reservationRouter from './routes/reservationRouter.js';
 import inventoryRouter from './routes/inventoryRouter.js';
+import productRouter from './routes/productRouter.js';
 
 dotenv.config();
 const app = express();
@@ -20,7 +21,8 @@ app
   .use('/user', userRouter)
   .use('/loan', loanRouter)
   .use('/reservation', reservationRouter)
-  .use('inventory', inventoryRouter)
+  .use('/inventory', inventoryRouter)
+  .use('/product', productRouter)
 
 
 // eslint-disable-next-line no-undef

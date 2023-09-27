@@ -2,9 +2,11 @@ import { Input, Button } from "@nextui-org/react";
 import { EyeFilledIcon } from "./EyeFilledIcon.jsx";
 import { EyeSlashFilledIcon } from "./EyeSlashFilledIcon.jsx";
 import  useLogin  from "../../hooks/useLogin.js";
+import handleSubmit from "../../services/peticionFetchUser.js";
 
 
-export default function Login() {
+// eslint-disable-next-line react/prop-types
+export default function Login({url}) {
     const {
       setEmail,
       isVisible,
@@ -12,41 +14,12 @@ export default function Login() {
       isInvalid,
     } = useLogin();
   
-    const handleSubmit =  (event) => {
-      event.preventDefault();
-      const url = "http://127.10.10.10:5030/auth/login";
-      const query = Object.fromEntries(new window.FormData(event.target));
     
-      fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(query),
-      })
-        .then(async (response) => {
-          if (!response.ok) {
-            const errorData = await response.json(); // Leer el cuerpo de la respuesta de error
-            throw new Error(errorData); // Utiliza el mensaje de error del servidor
-          }
-          return response.json();
-        })
-        .then((responseData) => {
-          // Manejar la respuesta exitosa aquí
-          console.log(responseData);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    };
-    
-  
-  
 
   return (
     <form
-      className="flex flex-col justify-center items-center shadow-md rounded px-8 pt-6 pb-8"
-      onSubmit={handleSubmit}
+      className="flex flex-col justify-center items-center px-8 pt-6 pb-8"
+      onSubmit={(event) => handleSubmit(event, url)}
     >
       <h1 className="text-4xl font-extrabold text-center mb-6">
         Login User

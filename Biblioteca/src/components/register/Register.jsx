@@ -40,7 +40,7 @@ export default function Register() {
 
   return (
     <form
-      className="flex flex-col justify-center items-center shadow-md rounded px-8 pt-6 pb-8"
+      className="flex flex-col justify-center items-center px-8 pt-6 pb-8"
       onSubmit={handleSubmit}
     >
       <h1 className="text-4xl font-extrabold text-center mb-6">

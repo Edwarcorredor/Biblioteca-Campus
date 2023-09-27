@@ -1,6 +1,5 @@
 const mapping = {
     users: {
-        ID: "_id",
         name_user: "name",
         email_user: "email",
         password_user: "password",
@@ -10,7 +9,6 @@ const mapping = {
         address_user: "address"
     },
     loans: {
-        ID: "_id",
         id_user: "userId",
         id_product: "productId",
         dateStart_loan: "startDate",
@@ -25,7 +23,6 @@ const mapping = {
         status_loan: "status" 
     },
     inventory:{
-        ID: "_id",
         id_product: "productId",
         quantity_inventory: "quantity",
         status_inventory: "status",
@@ -33,7 +30,6 @@ const mapping = {
         supplier_inventory: "supplier"
     },
     products: {
-        ID: "_id",
         name_product: "name",
         description_product: "description",
         category_product: "category",
@@ -46,11 +42,10 @@ const mapping = {
 const funMapping = (validatedData, collection) => {
     // Realiza la transformación de nombres de campo
     const transformedData = {};
-    Object.keys(validatedData).map((element) => {
-        const copy = mapping[collection][element];
-        transformedData[copy] = validatedData[element];
-        return null; // Debes devolver algo dentro de la función de mapeo
-    });
+    for (const original in mapping[collection]) {
+        const copy = mapping[collection][original];
+        transformedData[copy] = validatedData[original];
+    }
     return transformedData;
 }
 

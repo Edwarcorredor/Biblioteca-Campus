@@ -90,9 +90,9 @@ export default class Model {
         }
     }
 
-    static async updateLoan(datos){
+    static async updateLoan(id, datos){
         try{
-            const filter = { _id: datos._id};
+            const filter = { _id: id};
             const loanUpdate = await Prestamos.updateOne(filter, {$set: {...datos}})
             return loanUpdate
         } catch(error){
@@ -134,9 +134,9 @@ export default class Model {
         }
     }
 
-    static async updateInventory(datos){
+    static async updateInventory(id, datos){
         try{
-            const inventoryUpdate = await Inventory.updateOne({_id: datos._id},
+            const inventoryUpdate = await Inventory.updateOne({_id: id},
                 {$set: {...datos}});
             return inventoryUpdate
         }catch(error){

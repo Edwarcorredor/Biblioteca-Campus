@@ -56,6 +56,7 @@ export default function Register() {
         placeholder="Name Example"
         variant="bordered"
       />
+      
       <Input
         isRequired
         name="phone_user"

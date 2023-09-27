@@ -3,6 +3,11 @@ import handleSubmit from "../../services/peticionFetch.js";
 // eslint-disable-next-line react/prop-types
 function Inventory({hidden, url, titule, metodo}){
 
+    const roles = [
+        { label: "In stock", value: "In stock" },
+        { label: "Out of stock", value: "Out of stock" },
+      ];
+
     return(
 
         <form className="flex flex-col justify-center items-center px-8 pt-6 pb-8"
@@ -50,13 +55,12 @@ function Inventory({hidden, url, titule, metodo}){
             placeholder="Select a status"
             variant="bordered"
             className="max-w-xs mb-4"
-            >
-            <SelectItem key="In stock" value="In stock">
-                In stock
+        >
+            {roles.map((role) => (
+            <SelectItem key={role.value} value={role.value}>
+                {role.label}
             </SelectItem>
-            <SelectItem key="Out of stock" value="Out of stock">
-                Out of stock
-            </SelectItem>
+            ))}
             </Select>
             <Input
             isRequired

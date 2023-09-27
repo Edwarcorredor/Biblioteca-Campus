@@ -5,6 +5,6 @@ const inventoryRouter = Router();
 
 inventoryRouter
     .post('/crear', ControllerInventory.insertInventory)
-    .put('/actualizar', ControllerInventory.updateInventory)
+    .put('/actualizar/:id', ControllerInventory.updateInventory)
 
 export default inventoryRouter;

@@ -43,15 +43,18 @@ db.createCollection("loans", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["userId", "productId", "startDate", "endDate", "status"],
+      required: ["userId", "productsId", "startDate", "endDate", "status"],
       properties: {
         userId: {
           bsonType: "int",
           description: "ID of the user who made the loan"
         },
-        productId: {
-          bsonType: "int",
-          description: "ID of the borrowed product"
+        productsId: {
+          bsonType: "array",
+          description: "ID of the borrowed products",
+          items:{
+            bsonType: "number"
+          }
         },
         startDate: {
           bsonType: "date",
@@ -75,15 +78,15 @@ db.createCollection("reservations", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["userId", "productId", "reservationDate", "status"],
+      required: ["userId", "category", "reservationDate", "status", "quantity"],
       properties: {
         userId: {
           bsonType: "int",
           description: "ID of the user who made the reservation"
         },
-        productId: {
-          bsonType: "int",
-          description: "ID of the reserved product"
+        category: {
+          bsonType: "string",
+          description: "Category of the reserved product"
         },
         reservationDate: {
           bsonType: "date",
@@ -93,6 +96,10 @@ db.createCollection("reservations", {
           bsonType: "string",
           description: "Reservation status (pending, confirmed, canceled)",
           enum: ["pending", "confirmed", "canceled"]
+        },
+        quantity: {
+          bsonType: "int",
+          description: "Quantity reservation"
         }
       }
     }
@@ -103,11 +110,11 @@ db.createCollection("inventory", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["productId", "quantity", "status", "entryDate", "supplier"],
+      required: ["category", "quantity", "status", "entryDate", "supplier", "quantity_loan", "image"],
       properties: {
-        productId: {
-          bsonType: "int",
-          description: "ID of the product in inventory"
+        category: {
+          bsonType: "string",
+          description: "Category of the product in inventory"
         },
         quantity: {
           bsonType: "int",
@@ -125,6 +132,14 @@ db.createCollection("inventory", {
         supplier: {
           bsonType: "string",
           description: "Product supplier"
+        },
+        quantity_loan: {
+          bsonType: "int",
+          description: "Quantity available for loan in inventory"
+        },
+        image:{
+          bsonType: "string",
+          description: "Image of the product in inventory"
         }
       }
     }

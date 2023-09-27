@@ -1,6 +1,6 @@
-import funMapping from "../dto/transformDTO";
-import Model from "../models/Model";
-import { ProductSchema } from "../dto/modelDTO";
+import funMapping from "../dto/transformDTO.js";
+import Model from "../models/Model.js";
+import { ProductSchema } from "../dto/modelDTO.js";
 
 class ControllerProduct{
 
@@ -28,8 +28,7 @@ class ControllerProduct{
             });
         }
         const transformData = funMapping(validation, "products");
-        const id = req.params.id;
-        const result = Model.updateProduct(id, transformData)
+        const result = Model.updateProduct(transformData)
         res.json(result);
     }
 }

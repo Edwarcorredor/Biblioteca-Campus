@@ -14,7 +14,7 @@ class ControllerLoan{
         });
     }
 
-    const transformData = funMapping(validation, "loans");
+    const transformData = funMapping(validation.data, "loans");
     const result = await Model.insertLoan(transformData);
     res.json(result);
   }
@@ -28,9 +28,8 @@ class ControllerLoan{
         ),
       });
     }
-    const id = req.params.id;
     const transformData = funMapping(validation, "loans");
-    const result = await Model.updateLoan(id, transformData)
+    const result = await Model.updateLoan(transformData)
     res.json(result);
   }
 }

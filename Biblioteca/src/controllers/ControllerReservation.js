@@ -1,6 +1,6 @@
-import Model from "../models/Model";
-import funMapping from "../dto/transformDTO";
-import { ReservationSchema } from "../dto/modelDTO";
+import Model from "../models/Model.js";
+import funMapping from "../dto/transformDTO.js";
+import { ReservationSchema } from "../dto/modelDTO.js";
 
 class ControllerReservation{
 
@@ -28,9 +28,9 @@ class ControllerReservation{
       ),
       });
   }
-  const id = req.params.id;
+
   const transformData = funMapping(validation, "reservations");
-  const result = await Model.updateReservation(id, transformData);
+  const result = await Model.updateReservation(transformData);
   res.json(result);
   }
 

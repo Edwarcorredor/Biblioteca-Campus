@@ -1,10 +1,10 @@
-import ControllerInventory from "../controllers/ControllerInventory";
+import ControllerInventory from "../controllers/ControllerInventory.js";
 import { Router } from "express";
 
 const inventoryRouter = Router();
 
 inventoryRouter
-    .post('/', ControllerInventory.insertInventory)
-    .put('/', ControllerInventory.updateInventory)
+    .post('/crear', ControllerInventory.insertInventory)
+    .put('/actualizar', ControllerInventory.updateInventory)
 
 export default inventoryRouter;

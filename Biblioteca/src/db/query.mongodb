@@ -115,7 +115,8 @@ db.createCollection("inventory", {
         },
         status: {
           bsonType: "string",
-          description: "Product status in inventory"
+          description: "Product status in inventory",
+          enum: ["In stock", "Out of stock"]
         },
         entryDate: {
           bsonType: "date",

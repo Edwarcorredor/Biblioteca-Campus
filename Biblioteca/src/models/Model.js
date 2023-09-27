@@ -30,6 +30,7 @@ export default class Model {
 
     static async registerUser(datos){
         try{
+            console.log(datos);
             const checkEmail = await Usuarios.findOne({ email: datos.email });
             if (checkEmail) {
                 return "Correo ya registrado"
@@ -67,7 +68,7 @@ export default class Model {
 
             const filter = { _id: id };
             datos.password = await hash(datos.password, 10);
-            const update = { $set: datos };
+            const update = { $set: {...datos} };
             const result = await Usuarios.updateOne(filter, update);
 
             return result
@@ -80,7 +81,7 @@ export default class Model {
     static async insertLoan(datos){
         try{
             const loanInsert = await Prestamos.insertOne({
-                _id: getNextSequenceValue(db, "loans"),
+                _id: await getNextSequenceValue(db, "loans"),
                 ...datos
             })
             return loanInsert
@@ -89,10 +90,10 @@ export default class Model {
         }
     }
 
-    static async updateLoan(id, datos){
+    static async updateLoan(datos){
         try{
-            const filter = { _id: id};
-            const loanUpdate = await Prestamos.updateOne(filter, {$set: {status: datos.status}})
+            const filter = { _id: datos._id};
+            const loanUpdate = await Prestamos.updateOne(filter, {$set: {...datos}})
             return loanUpdate
         } catch(error){
             return error
@@ -102,7 +103,7 @@ export default class Model {
     static async insertReservation(datos){
         try{
             const reservationInsert = await Reservations.insertOne({
-                _id: getNextSequenceValue(db, "reservations"),
+                _id: await getNextSequenceValue(db, "reservations"),
                 ...datos
             })
             return reservationInsert
@@ -111,10 +112,10 @@ export default class Model {
         }
     }
 
-    static async updateReservation(id, datos){
+    static async updateReservation(datos){
         try{
-            const filter = { _id: id};
-            const reservationUpdate = await Reservations.updateOne(filter, {$set: {status: datos.status}})
+            const filter = { _id: datos._id};
+            const reservationUpdate = await Reservations.updateOne(filter, {$set: {...datos}})
             return reservationUpdate
         } catch(error){
             return error
@@ -124,7 +125,7 @@ export default class Model {
     static async insertInventory(datos){
         try{
             const inventoryInsert = await Inventory.insertOne({
-                _id: getNextSequenceValue(db, "inventory"),
+                _id: await getNextSequenceValue(db, "inventory"),
                 ...datos
             });
             return inventoryInsert
@@ -133,10 +134,10 @@ export default class Model {
         }
     }
 
-    static async updateInventory(id, datos){
+    static async updateInventory(datos){
         try{
-            const inventoryUpdate = await Inventory.updateOne({_id: id},
-                {$set: {datos}});
+            const inventoryUpdate = await Inventory.updateOne({_id: datos._id},
+                {$set: {...datos}});
             return inventoryUpdate
         }catch(error){
             return error
@@ -146,7 +147,7 @@ export default class Model {
     static async insertProduct(datos){
         try{
             const productInsert = await Products.insertOne({
-                _id: getNextSequenceValue(db, "products"),
+                _id: await getNextSequenceValue(db, "products"),
                 ...datos
             });
             return productInsert
@@ -158,7 +159,7 @@ export default class Model {
     static async updateProduct(id, datos){
         try{
             const productUpdate = await Products.updateOne({_id: id},
-                {$set: {datos}});
+                {$set: {...datos}});
             return productUpdate
         }catch(error){
             return error

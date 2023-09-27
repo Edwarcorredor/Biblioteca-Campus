@@ -2,6 +2,7 @@ import { z } from "zod";
 
 // Esquema para user
 const userSchema = z.object({
+  ID: z.number().optional(),
   name_user: z.string().min(1).max(255),
   email_user: z.string().email(),
   password_user: z.string(),
@@ -12,34 +13,38 @@ const userSchema = z.object({
 });
 
 const LoanSchema = z.object({
-  userId: z.number().int().min(1).description("ID of the user who made the loan"),
-  productId: z.number().int().min(1).description("ID of the borrowed product"),
-  startDate: z.date().description("Start date of the loan"),
-  endDate: z.date().description("End date of the loan"),
-  status: z.enum(["active", "expired", "returned"]).description("Loan status (active, expired, returned)"),
+  ID: z.number().optional(),
+  id_user: z.number().int().min(1),
+  id_product: z.number().int().min(1),
+  dateStart_loan: z.date(),
+  dateEnd_loan: z.date(),
+  status_loan: z.enum(["active", "expired", "returned"])
 });
 
 const ReservationSchema = z.object({
-  userId: z.number().int().min(1).description("ID of the user who made the reservation"),
-  productId: z.number().int().min(1).description("ID of the reserved product"),
-  reservationDate: z.date().description("Reservation date"),
-  status: z.enum(["pending", "confirmed", "canceled"]).description("Reservation status (pending, confirmed, canceled)"),
+  ID: z.number().optional(),
+  id_user: z.number().int().min(1),
+  id_product: z.number().int().min(1),
+  date_reservation: z.date(),
+  status_loan: z.enum(["pending", "confirmed", "canceled"])
 });
 
 const InventorySchema = z.object({
-  productId: z.number().int().min(1).description("ID of the product in inventory"),
-  quantity: z.number().int().min(0).description("Quantity available in inventory"),
-  status: z.string().description("Product status in inventory"),
-  entryDate: z.date().description("Date of entry of the product into inventory"),
-  supplier: z.string().description("Product supplier"),
+  ID: z.number().optional(),
+  id_product: z.number().int().min(1),
+  quantity_inventory: z.number().int().min(0),
+  status_inventory: z.enum(["In stock", "Out of stock"]),
+  entryDate_inventory: z.date(),
+  supplier_inventory: z.string()
 });
 
 const ProductSchema = z.object({
-  name: z.string().description("Product name"),
-  description: z.string().description("Product description"),
-  category: z.string().description("Product category"),
-  price: z.number().description("Product price"),
-  available: z.boolean().description("Product availability"),
+  ID: z.number().optional(),
+  name_product: z.string(),
+  description_product: z.string(),
+  category_product: z.string(),
+  price_product: z.number(),
+  available_product: z.boolean()
 });
 
 

@@ -5,7 +5,14 @@ import { ProductSchema } from "../dto/modelDTO.js";
 class ControllerProduct{
 
     static async insertProduct(req, res){
-        const validation = ProductSchema.safeParse(req.body);
+      const datos = req.body;
+      const transformDatos = {
+        ...datos,
+        price_product: parseFloat(datos.price_product),
+        entryDate_inventory: new Date(datos.entryDate_inventory),
+        quantity_inventory: parseInt(datos.quantity_inventory)
+      };
+        const validation = ProductSchema.safeParse(transformDatos);
         if (!validation.success) {
             return res.status(400).json({
               message: validation.error.errors.map(
@@ -13,7 +20,7 @@ class ControllerProduct{
               ),
             });
         }
-        const transformData = funMapping(validation, "products");
+        const transformData = funMapping(validation.data, "products");
         const result = await Model.insertProduct(transformData);
         res.json(result);
     }
@@ -27,7 +34,7 @@ class ControllerProduct{
               ),
             });
         }
-        const transformData = funMapping(validation, "products");
+        const transformData = funMapping(validation.data, "products");
         const result = Model.updateProduct(transformData)
         res.json(result);
     }

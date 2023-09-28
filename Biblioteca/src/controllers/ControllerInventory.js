@@ -8,9 +8,9 @@ class ControllerInventory{
       const datos = req.body;
       const transformDatos = {
         ...datos,
-        id_product: parseInt(datos.id_product),
-        quantity_inventory: parseInt(datos.quantity_inventory),
+        stock_inventory: parseInt(datos.stock_inventory),
         entryDate_inventory: new Date(datos.entryDate_inventory),
+        quantity_inventory: parseInt(datos.quantity_inventory)
       };   
       const validation = InventorySchema.safeParse(transformDatos);
       if (!validation.success) {
@@ -29,9 +29,9 @@ class ControllerInventory{
       const datos = req.body;
       const transformDatos = {
         ...datos,
-        id_product: parseInt(datos.id_product),
-        quantity_inventory: parseInt(datos.quantity_inventory),
+        stock_inventory: parseInt(datos.stock_inventory),
         entryDate_inventory: new Date(datos.entryDate_inventory),
+        quantity_inventory: parseInt(datos.quantity_inventory)
       };
         const validation = InventorySchema.safeParse(transformDatos);
         if (!validation.success) {

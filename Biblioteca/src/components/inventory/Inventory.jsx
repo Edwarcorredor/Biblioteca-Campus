@@ -3,7 +3,7 @@ import handleSubmit from "../../services/peticionFetch.js";
 // eslint-disable-next-line react/prop-types
 function Inventory({hidden, url, titule, metodo}){
 
-    const roles = [
+    const status = [
         { label: "In stock", value: "In stock" },
         { label: "Out of stock", value: "Out of stock" },
       ];
@@ -30,22 +30,39 @@ function Inventory({hidden, url, titule, metodo}){
                  : null}
             <Input
             isRequired
+            type="text"
+            name="name_inventory"
+            label="Name Product"
+            className="max-w-xs mb-4"
+            placeholder="Name example"
+            variant="bordered"
+            />
+            <Input
+            isRequired
+            type="text"
+            name="serial_inventory"
+            label="Serial Product"
+            className="max-w-xs mb-4"
+            placeholder="123ABC456DEF"
+            variant="bordered"
+            />
+            <Input
+            isRequired
             type="number"
-            name="id_product"
-            min="0"
-            label="Id Product"
+            min="1"
+            name="stock_inventory"
+            label="Stock inventory"
             className="max-w-xs mb-4"
             placeholder="123"
             variant="bordered"
             />
             <Input
             isRequired
-            type="number"
-            min="0"
-            name="quantity_inventory"
-            label="Quantity inventory"
+            type="text"
+            name="description_product"
+            label="Descripcion Product"
             className="max-w-xs mb-4"
-            placeholder="123"
+            placeholder="Description example"
             variant="bordered"
             />
             <Select
@@ -56,9 +73,9 @@ function Inventory({hidden, url, titule, metodo}){
             variant="bordered"
             className="max-w-xs mb-4"
         >
-            {roles.map((role) => (
-            <SelectItem key={role.value} value={role.value}>
-                {role.label}
+            {status.map((statu) => (
+            <SelectItem key={statu.value} value={statu.value}>
+                {statu.label}
             </SelectItem>
             ))}
             </Select>
@@ -77,6 +94,15 @@ function Inventory({hidden, url, titule, metodo}){
             label="Supplier inventory"
             className="max-w-xs mb-4"
             placeholder="Name Example"
+            variant="bordered"
+            />
+            <Input
+            isRequired
+            type="text"
+            name="image_inventory"
+            label="Image Product"
+            className="max-w-xs mb-4"
+            placeholder="http://examplejpg.com"
             variant="bordered"
             />
             <Button color="primary" variant="shadow" type="submit">

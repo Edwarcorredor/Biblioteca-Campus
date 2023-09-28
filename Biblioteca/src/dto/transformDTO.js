@@ -16,23 +16,26 @@ const mapping = {
         status_loan: "status"
     },
     reservations:{
-        ID: "_id",
         id_user: "userId",
         id_product: "productId",
         date_reservation: "reservationDate",
-        status_loan: "status" 
+        status_loan: "status",
+        quantity_loan: "quantity"
     },
     inventory:{
-        id_product: "productId",
-        quantity_inventory: "quantity",
+        name_inventory: "name",
+        serial_inventory: "serial",
+        stock_inventory: "stock",
+        description_product: "description",
         status_inventory: "status",
         entryDate_inventory: "entryDate",
-        supplier_inventory: "supplier"
+        supplier_inventory: "supplier",
+        quantity_inventory: "quantity",
+        image_inventory: "image"
     },
     products: {
         name_product: "name",
-        description_product: "description",
-        category_product: "category",
+        serial_product: "serial",
         price_product: "price",
         available_product: "available"
     }

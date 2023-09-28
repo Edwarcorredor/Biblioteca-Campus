@@ -110,11 +110,15 @@ db.createCollection("inventory", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["name", "stock", "description", "status", "entryDate", "supplier", "quantity", "image"],
+      required: ["name", "serial", "stock", "description", "status", "entryDate", "supplier", "quantity", "image"],
       properties: {
         name: {
           bsonType: "string",
           description: "Name of the product in inventory"
+        },
+        serial: {
+          bsonType: "string",
+          description: "Serial of the product in inventory"
         },
         stock: {
           bsonType: "int",
@@ -154,11 +158,15 @@ db.createCollection("products", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["name", "price", "available"],
+      required: ["name","serial", "price", "available"],
       properties: {
         name: {
           bsonType: "string",
           description: "Product name"
+        },
+        serial: {
+          bsonType: "string",
+          description: "Product serial"
         },
         price: {
           bsonType: "number",

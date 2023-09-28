@@ -33,6 +33,7 @@ const ReservationSchema = z.object({
 const InventorySchema = z.object({
 
   name_inventory: z.string(),
+  serial_inventory: z.string(),
   stock_inventory: z.number().int().min(1),
   description_product: z.string(),
   status_inventory: z.enum(["In stock", "Out of stock"]),
@@ -45,6 +46,7 @@ const InventorySchema = z.object({
 const ProductSchema = z.object({
 
   name_product: z.string(),
+  serial_product: z.string(),
   price_product: z.number(),
   available_product: z.boolean()
 });

@@ -24,25 +24,27 @@ const LoanSchema = z.object({
 const ReservationSchema = z.object({
 
   id_user: z.number().int().min(1),
-  id_product: z.number().int().min(1),
+  name_product: z.string(),
   date_reservation: z.date(),
-  status_loan: z.enum(["pending", "confirmed", "canceled"])
+  status_loan: z.enum(["pending", "confirmed", "canceled"]),
+  quantity_loan: z.number().int().min(1)
 });
 
 const InventorySchema = z.object({
 
-  id_product: z.number().int().min(1),
-  quantity_inventory: z.number().int().min(0),
+  name_inventory: z.string(),
+  stock_inventory: z.number().int().min(1),
+  description_product: z.string(),
   status_inventory: z.enum(["In stock", "Out of stock"]),
   entryDate_inventory: z.date(),
-  supplier_inventory: z.string()
+  supplier_inventory: z.string(),
+  quantity_inventory: z.number().int().min(1),
+  image_inventory: z.string()
 });
 
 const ProductSchema = z.object({
 
   name_product: z.string(),
-  description_product: z.string(),
-  category_product: z.string(),
   price_product: z.number(),
   available_product: z.boolean()
 });

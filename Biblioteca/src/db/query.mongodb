@@ -78,13 +78,13 @@ db.createCollection("reservations", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["userId", "category", "reservationDate", "status", "quantity"],
+      required: ["userId", "nameProduct", "reservationDate", "status", "quantity"],
       properties: {
         userId: {
           bsonType: "int",
           description: "ID of the user who made the reservation"
         },
-        category: {
+        nameProduct: {
           bsonType: "string",
           description: "Category of the reserved product"
         },
@@ -110,15 +110,19 @@ db.createCollection("inventory", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["category", "quantity", "status", "entryDate", "supplier", "quantity_loan", "image"],
+      required: ["name", "stock", "description", "status", "entryDate", "supplier", "quantity", "image"],
       properties: {
-        category: {
+        name: {
           bsonType: "string",
-          description: "Category of the product in inventory"
+          description: "Name of the product in inventory"
         },
-        quantity: {
+        stock: {
           bsonType: "int",
-          description: "Quantity available in inventory"
+          description: "Stock available in inventory"
+        },
+        description: {
+          bsonType: "string",
+          description: "Product description"
         },
         status: {
           bsonType: "string",
@@ -133,7 +137,7 @@ db.createCollection("inventory", {
           bsonType: "string",
           description: "Product supplier"
         },
-        quantity_loan: {
+        quantity: {
           bsonType: "int",
           description: "Quantity available for loan in inventory"
         },
@@ -150,19 +154,11 @@ db.createCollection("products", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["name", "description", "category", "price", "available"],
+      required: ["name", "price", "available"],
       properties: {
         name: {
           bsonType: "string",
           description: "Product name"
-        },
-        description: {
-          bsonType: "string",
-          description: "Product description"
-        },
-        category: {
-          bsonType: "string",
-          description: "Product category"
         },
         price: {
           bsonType: "number",

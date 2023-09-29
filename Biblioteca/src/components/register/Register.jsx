@@ -2,8 +2,10 @@ import  { useState } from "react";
 import { Input, Button, Select, SelectItem } from "@nextui-org/react";
 import { EyeFilledIcon } from "../login/EyeFilledIcon.jsx";
 import { EyeSlashFilledIcon } from "../login/EyeSlashFilledIcon.jsx";
+import handleSubmit from "../../services/peticionFetchUser.js";
 
-export default function Register() {
+// eslint-disable-next-line react/prop-types
+export default function Register({url}) {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -13,35 +15,12 @@ export default function Register() {
     { label: "User", value: "user" },
   ];
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const url = "http://127.10.10.10:5030/auth/register";
-    const query = Object.fromEntries(new window.FormData(event.target));
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(query),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((responseData) => {
-        console.log(responseData);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
+
 
   return (
     <form
       className="flex flex-col justify-center items-center px-8 pt-6 pb-8"
-      onSubmit={handleSubmit}
+      onSubmit={(event) => {handleSubmit(event, url)}}
     >
       <h1 className="text-4xl font-extrabold text-center mb-6">
         Register User

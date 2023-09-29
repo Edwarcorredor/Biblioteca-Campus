@@ -16,8 +16,9 @@ function Inventory({hidden, url, titule, metodo}){
                 {titule}
             </h1>
 
-            {hidden ? 
-                <Input
+            {hidden ?
+                <div>
+                    <Input
                     isRequired
                     type="number"
                     name="ID"
@@ -26,7 +27,20 @@ function Inventory({hidden, url, titule, metodo}){
                     className="max-w-xs mb-4"
                     placeholder="123"
                     variant="bordered"
-                />
+                    />
+                    <Input
+                    isRequired
+                    type="number"
+                    name="quantity_inventory"
+                    min="0"
+                    label="Quantity inventory"
+                    className="max-w-xs mb-4"
+                    placeholder="123"
+                    variant="bordered"
+                    />
+                </div> 
+                
+                
                  : null}
             <Input
             isRequired

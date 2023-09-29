@@ -10,17 +10,21 @@ class ControllerInventory{
         ...datos,
         stock_inventory: parseInt(datos.stock_inventory),
         entryDate_inventory: new Date(datos.entryDate_inventory),
-        quantity_inventory: parseInt(datos.quantity_inventory)
+        quantity_inventory: parseInt(datos.stock_inventory)
       };   
       const validation = InventorySchema.safeParse(transformDatos);
       if (!validation.success) {
-          return res.status(401).json({
+          console.log(validation.error.errors.map(
+            (error) => `${error.path} - ${error.message}`
+          ))
+          return res.status(400).json({
             message: validation.error.errors.map(
               (error) => `${error.path} - ${error.message}`
             ),
           });
       }
       const transformData = funMapping(validation.data, "inventory");
+      console.log(transformData);
       const result = await Model.insertInventory(transformData);
       res.json(result);
     }

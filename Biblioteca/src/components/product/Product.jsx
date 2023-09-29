@@ -10,14 +10,15 @@ function Product({hidden, url, titule, metodo}){
 
     return(
 
-        <form className="flex flex-col justify-center items-center px-8 pt-6 pb-8"
+        <form className="flex flex-col justify-center items-center"
         onSubmit={(event) => handleSubmit(event, url, metodo)}>
             <h1 className="text-4xl font-extrabold text-center mb-6">
                 {titule}
             </h1>
 
             {hidden ? 
-                <Input
+                <div>
+                    <Input
                     isRequired
                     type="number"
                     name="ID"
@@ -26,7 +27,23 @@ function Product({hidden, url, titule, metodo}){
                     className="max-w-xs mb-4"
                     placeholder="123"
                     variant="bordered"
-                />
+                    />
+                    <Select
+                    isRequired
+                    label="Status"
+                    name="status_inventory"
+                    placeholder="Select a status"
+                    variant="bordered"
+                    className="max-w-xs mb-4"
+                    >
+                    {status.map((statu) => (
+                    <SelectItem key={statu.value} value={statu.value}>
+                        {statu.label}
+                    </SelectItem>
+                    ))}
+                    </Select>
+                </div>
+                
                  : null}
             <Input
             isRequired
@@ -50,26 +67,13 @@ function Product({hidden, url, titule, metodo}){
             isRequired
             type="number"
             min="1"
-            name="stock_inventory"
-            label="Stock inventory"
+            name="price_product"
+            label="Price Product"
             className="max-w-xs mb-4"
             placeholder="123"
             variant="bordered"
             />
-            <Select
-            isRequired
-            label="Status"
-            name="status_inventory"
-            placeholder="Select a status"
-            variant="bordered"
-            className="max-w-xs mb-4"
-        >
-            {status.map((statu) => (
-            <SelectItem key={statu.value} value={statu.value}>
-                {statu.label}
-            </SelectItem>
-            ))}
-            </Select>
+            
         
             <Button color="primary" variant="shadow" type="submit">
             Save

@@ -2,6 +2,7 @@
 //import Register from './components/register/Register.jsx';
 //import Inventory from './components/inventory/Inventory.jsx'
 import Product from './components/product/Product.jsx';
+import Loan from './components/loan/Loan.jsx';
 import './index.css'
 
 export default function App(){

@@ -44,7 +44,7 @@ class ControllerProduct{
         }
         const id = parseInt(req.params.id);
         const transformData = funMapping(validation.data, "products");
-        console.log(transformData);
+
         const result = Model.updateProduct(id, transformData)
         res.json(result);
     }

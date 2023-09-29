@@ -15,6 +15,7 @@ const userSchema = z.object({
 const LoanSchema = z.object({
 
   id_user: z.number().int().min(1),
+  id_reserva: z.number().int().min(1).optional(),
   id_products: z.array(z.number().int().min(1)).min(1),
   dateStart_loan: z.date(),
   dateEnd_loan: z.date(),

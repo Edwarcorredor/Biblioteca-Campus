@@ -48,7 +48,7 @@ function Product({hidden, url, titule, metodo}){
             <Input
             isRequired
             type="text"
-            name="name_inventory"
+            name="name_product"
             label="Name Product"
             className="max-w-xs mb-4"
             placeholder="Name example"
@@ -57,7 +57,7 @@ function Product({hidden, url, titule, metodo}){
             <Input
             isRequired
             type="text"
-            name="serial_inventory"
+            name="serial_product"
             label="Serial Product"
             className="max-w-xs mb-4"
             placeholder="123ABC456DEF"

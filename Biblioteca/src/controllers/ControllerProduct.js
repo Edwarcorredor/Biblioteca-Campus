@@ -9,11 +9,13 @@ class ControllerProduct{
       const transformDatos = {
         ...datos,
         price_product: parseFloat(datos.price_product),
-        entryDate_inventory: new Date(datos.entryDate_inventory),
-        quantity_inventory: parseInt(datos.quantity_inventory)
+        available_product: true
       };
         const validation = ProductSchema.safeParse(transformDatos);
         if (!validation.success) {
+          console.log(validation.error.errors.map(
+            (error) => `${error.path} - ${error.message}`
+          ))
             return res.status(400).json({
               message: validation.error.errors.map(
                 (error) => `${error.path} - ${error.message}`
@@ -26,7 +28,13 @@ class ControllerProduct{
     }
 
     static async updateProduct(req,res){
-        const validation = ProductSchema.safeParse(req.body);
+      const datos = req.body;
+      const transformDatos = {
+        ...datos,
+        price_product: parseFloat(datos.price_product),
+        available_product: (datos.available_product == "true") 
+      };
+        const validation = ProductSchema.safeParse(transformDatos);
         if (!validation.success) {
             return res.status(400).json({
               message: validation.error.errors.map(
@@ -34,8 +42,10 @@ class ControllerProduct{
               ),
             });
         }
+        const id = parseInt(req.params.id);
         const transformData = funMapping(validation.data, "products");
-        const result = Model.updateProduct(transformData)
+        console.log(transformData);
+        const result = Model.updateProduct(id, transformData)
         res.json(result);
     }
 }

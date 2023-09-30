@@ -9,10 +9,13 @@ class ControllerLoan{
     const transformDatos = {
       ...datos,
       id_user: parseInt(datos.id_user),
-      id_product: parseInt(datos.id_product),
+      id_reservation: datos.id_reservation ? parseInt(datos.id_reservation) : undefined,
+      id_products: datos.id_products.split(",").map((element) => parseInt(element)),
       dateStart_loan: new Date(datos.dateStart_loan),
       dateEnd_loan: new Date(datos.dateEnd_loan),
+      status_loan: "active"
     }
+    console.log(transformDatos);
     const validation = LoanSchema.safeParse(transformDatos);
     if (!validation.success) {
         return res.status(400).json({
@@ -21,7 +24,6 @@ class ControllerLoan{
           ),
         });
     }
-
     const transformData = funMapping(validation.data, "loans");
     const result = await Model.insertLoan(transformData);
     res.json(result);
@@ -32,9 +34,10 @@ class ControllerLoan{
     const transformDatos = {
       ...datos,
       id_user: parseInt(datos.id_user),
-      id_product: parseInt(datos.id_product),
+      id_reservation: datos.id_reservation ? parseInt(datos.id_reservation) : undefined,
+      id_products: datos.id_products.split(",").map((element) => parseInt(element)),
       dateStart_loan: new Date(datos.dateStart_loan),
-      dateEnd_loan: new Date(datos.dateEnd_loan),
+      dateEnd_loan: new Date(datos.dateEnd_loan)
     }
     const validation = LoanSchema.safeParse(transformDatos);
     if (!validation.success) {
@@ -45,7 +48,7 @@ class ControllerLoan{
       });
     }
     const id = parseInt(req.params.id);
-    const transformData = funMapping(validation, "loans");
+    const transformData = funMapping(validation.data, "loans");
     const result = await Model.updateLoan(id, transformData)
     res.json(result);
   }

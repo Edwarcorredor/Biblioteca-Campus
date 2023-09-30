@@ -49,6 +49,10 @@ db.createCollection("loans", {
           bsonType: "int",
           description: "ID of the user who made the loan"
         },
+        reservationId:{
+          bsonType: "int",
+          description: "ID reservation of the user who made the loan"
+        },
         productsId: {
           bsonType: "array",
           description: "ID of the borrowed products",

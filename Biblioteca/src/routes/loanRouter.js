@@ -4,7 +4,7 @@ import ControllerLoan from "../controllers/ControllerLoans.js";
 const loanRouter = Router();
 
 loanRouter
-    .post('/', ControllerLoan.insertLoan)
-    .put('/:id', ControllerLoan.updateLoan)
+    .post('/crear', ControllerLoan.insertLoan)
+    .put('/actualizar/:id', ControllerLoan.updateLoan)
 
 export default loanRouter;

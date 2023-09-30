@@ -32,7 +32,7 @@ function Loan({hidden, url, titule, metodo}){
                     <Select
                     isRequired
                     label="Status"
-                    name="status_inventory"
+                    name="status_loan"
                     placeholder="Select a status"
                     variant="bordered"
                     className="max-w-xs mb-4"
@@ -57,19 +57,19 @@ function Loan({hidden, url, titule, metodo}){
             />
             <Input
             type="number"
-            name="id_reserva"
-            label="Id Reserva"
+            name="id_reservation"
+            label="Id Reservation"
             className="max-w-xs mb-4"
             placeholder="123"
             variant="bordered"
             />
             <Input
             isRequired
-            type="number"
+            type="text"
             name="id_products"
             label="Id Products"
             className="max-w-xs mb-4"
-            placeholder="123"
+            placeholder="1, 2, 3"
             variant="bordered"
             />
             <Input
@@ -88,9 +88,6 @@ function Loan({hidden, url, titule, metodo}){
             className="max-w-xs mb-4"
             variant="bordered"
             />
-
-            
-        
             <Button color="primary" variant="shadow" type="submit">
             Save
             </Button>

@@ -19,7 +19,7 @@ export default function Register({url}) {
 
   return (
     <form
-      className="flex flex-col justify-center items-center px-8 pt-6 pb-8"
+      className="flex flex-col justify-center items-center "
       onSubmit={(event) => {handleSubmit(event, url)}}
     >
       <h1 className="text-4xl font-extrabold text-center mb-6">
@@ -33,7 +33,6 @@ export default function Register({url}) {
         label="Name"
         className="max-w-xs mb-4"
         placeholder="Name Example"
-        variant="bordered"
       />
       
       <Input
@@ -43,7 +42,6 @@ export default function Register({url}) {
         label="Phone"
         className="max-w-xs mb-4"
         placeholder="123456789"
-        variant="bordered"
         min="0"
       />
       <Input
@@ -53,7 +51,6 @@ export default function Register({url}) {
         label="Address"
         className="max-w-xs mb-4"
         placeholder="Cra 123 #45-67"
-        variant="bordered"
       />
       <Input
         isRequired
@@ -62,7 +59,6 @@ export default function Register({url}) {
         label="DNI"
         className="max-w-xs mb-4"
         placeholder="123456789"
-        variant="bordered"
         min="0"
       />
       <Select
@@ -70,7 +66,6 @@ export default function Register({url}) {
         label="Role"
         name="role_user"
         placeholder="Select a role"
-        variant="bordered"
         className="max-w-xs mb-4"
       >
         {roles.map((role) => (
@@ -86,13 +81,11 @@ export default function Register({url}) {
         label="Email"
         className="max-w-xs mb-4"
         placeholder="Email@example.com"
-        variant="bordered"
       />
       <Input
         key="password"
         name="password_user"
         label="Password"
-        variant="bordered"
         isRequired
         placeholder="Enter your password"
         endContent={

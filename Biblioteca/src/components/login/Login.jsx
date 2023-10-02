@@ -18,7 +18,7 @@ export default function Login({url}) {
 
   return (
     <form
-      className="flex flex-col justify-center items-center px-8 pt-6 pb-8"
+      className="flex flex-col justify-center items-center h-screen"
       onSubmit={(event) => handleSubmit(event, url)}
     >
       <h1 className="text-4xl font-extrabold text-center mb-6">
@@ -30,7 +30,6 @@ export default function Login({url}) {
         name="email"
         type="email"
         label="Email"
-        variant="bordered"
         isInvalid={isInvalid}
         color={isInvalid ? "danger" : "success"}
         errorMessage={isInvalid && "Please enter a valid email"}
@@ -42,7 +41,6 @@ export default function Login({url}) {
         key="password"
         name="password"
         label="Password"
-        variant="bordered"
         isRequired
         placeholder="Enter your password"
         endContent={

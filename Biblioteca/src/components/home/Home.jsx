@@ -11,7 +11,7 @@ export default function Home() {
           <p className="font-bold text-inherit">Biblioteca</p>
         </NavbarBrand>
         <NavbarContent justify="end">
-          <NavbarItem className="hidden lg:flex">
+          <NavbarItem >
             <Link to ="/login">Login</Link>
           </NavbarItem>
           <NavbarItem>

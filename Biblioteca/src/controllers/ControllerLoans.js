@@ -49,7 +49,7 @@ class ControllerLoan{
     }
     const id = parseInt(req.params.id);
     const transformData = funMapping(validation.data, "loans");
-    const result = await Model.updateLoan(id, transformData)
+    const result = await Model.updateLoan(id, transformData);
     res.json(result);
   }
 }

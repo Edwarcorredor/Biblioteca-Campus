@@ -8,6 +8,7 @@ class ControllerInventory{
       const datos = req.body;
       const transformDatos = {
         ...datos,
+        status_inventory: "In stock",
         stock_inventory: parseInt(datos.stock_inventory),
         entryDate_inventory: new Date(datos.entryDate_inventory),
         quantity_inventory: parseInt(datos.stock_inventory)
@@ -47,7 +48,7 @@ class ControllerInventory{
         }
         const id = parseInt(req.params.id);
         const transformData = funMapping(validation.data, "inventory");
-        const results = Model.updateInventory(id, transformData);
+        const results = await Model.updateInventory(id, transformData);
         res.json(results); 
     }
 }

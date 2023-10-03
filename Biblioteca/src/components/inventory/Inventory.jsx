@@ -1,7 +1,7 @@
 import { Input, Button, Select, SelectItem } from "@nextui-org/react";
 import handleSubmit from "../../services/peticionFetch.js";
 // eslint-disable-next-line react/prop-types
-function Inventory({hidden, url, titule, metodo}){
+function Inventory({hidden, url, title, metodo}){
 
     const status = [
         { label: "In stock", value: "In stock" },
@@ -10,10 +10,10 @@ function Inventory({hidden, url, titule, metodo}){
 
     return(
 
-        <form className="flex flex-col justify-center items-center px-8 pt-6 pb-8"
+        <form className="flex flex-col justify-center items-center"
         onSubmit={(event) => handleSubmit(event, url, metodo)}>
             <h1 className="text-4xl font-extrabold text-center mb-6">
-                {titule}
+                {title}
             </h1>
 
             {hidden ?
@@ -26,7 +26,7 @@ function Inventory({hidden, url, titule, metodo}){
                     label="Id"
                     className="max-w-xs mb-4"
                     placeholder="123"
-                    variant="bordered"
+    
                     />
                     <Input
                     isRequired
@@ -36,11 +36,23 @@ function Inventory({hidden, url, titule, metodo}){
                     label="Quantity inventory"
                     className="max-w-xs mb-4"
                     placeholder="123"
-                    variant="bordered"
+    
                     />
+
+                    <Select
+                    isRequired
+                    label="Status"
+                    name="status_inventory"
+                    placeholder="Select a status"
+                    className="max-w-xs mb-4"
+                    >
+                    {status.map((statu) => (
+                    <SelectItem key={statu.value} value={statu.value}>
+                        {statu.label}
+                    </SelectItem>
+                    ))}
+                    </Select>
                 </div> 
-                
-                
                  : null}
             <Input
             isRequired
@@ -49,7 +61,6 @@ function Inventory({hidden, url, titule, metodo}){
             label="Name Product"
             className="max-w-xs mb-4"
             placeholder="Name example"
-            variant="bordered"
             />
             <Input
             isRequired
@@ -58,7 +69,6 @@ function Inventory({hidden, url, titule, metodo}){
             label="Serial Product"
             className="max-w-xs mb-4"
             placeholder="123ABC456DEF"
-            variant="bordered"
             />
             <Input
             isRequired
@@ -68,7 +78,6 @@ function Inventory({hidden, url, titule, metodo}){
             label="Stock inventory"
             className="max-w-xs mb-4"
             placeholder="123"
-            variant="bordered"
             />
             <Input
             isRequired
@@ -77,29 +86,14 @@ function Inventory({hidden, url, titule, metodo}){
             label="Descripcion Product"
             className="max-w-xs mb-4"
             placeholder="Description example"
-            variant="bordered"
             />
-            <Select
-            isRequired
-            label="Status"
-            name="status_inventory"
-            placeholder="Select a status"
-            variant="bordered"
-            className="max-w-xs mb-4"
-        >
-            {status.map((statu) => (
-            <SelectItem key={statu.value} value={statu.value}>
-                {statu.label}
-            </SelectItem>
-            ))}
-            </Select>
+            
             <Input
             isRequired
             type="date"
             name="entryDate_inventory"
             label="Date inventory"
             className="max-w-xs mb-4"
-            variant="bordered"
             />
             <Input
             isRequired
@@ -108,7 +102,6 @@ function Inventory({hidden, url, titule, metodo}){
             label="Supplier inventory"
             className="max-w-xs mb-4"
             placeholder="Name Example"
-            variant="bordered"
             />
             <Input
             isRequired
@@ -117,7 +110,6 @@ function Inventory({hidden, url, titule, metodo}){
             label="Image Product"
             className="max-w-xs mb-4"
             placeholder="http://examplejpg.com"
-            variant="bordered"
             />
             <Button color="primary" variant="shadow" type="submit">
             Save

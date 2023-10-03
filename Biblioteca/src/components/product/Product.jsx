@@ -1,7 +1,7 @@
 import { Input, Button, Select, SelectItem } from "@nextui-org/react";
 import handleSubmit from "../../services/peticionFetch.js";
 // eslint-disable-next-line react/prop-types
-function Product({hidden, url, titule, metodo}){
+function Product({hidden, url, title, metodo}){
 
     const status = [
         { label: "Available", value: true },
@@ -10,10 +10,10 @@ function Product({hidden, url, titule, metodo}){
 
     return(
 
-        <form className="flex flex-col justify-center items-center"
+        <form className="flex flex-col justify-center items-center h-screen"
         onSubmit={(event) => handleSubmit(event, url, metodo)}>
             <h1 className="text-4xl font-extrabold text-center mb-6">
-                {titule}
+                {title}
             </h1>
 
             {hidden ? 
@@ -26,14 +26,14 @@ function Product({hidden, url, titule, metodo}){
                     label="Id"
                     className="max-w-xs mb-4"
                     placeholder="123"
-                    variant="bordered"
+    
                     />
                     <Select
                     isRequired
                     label="Status"
                     name="status_inventory"
                     placeholder="Select a status"
-                    variant="bordered"
+    
                     className="max-w-xs mb-4"
                     >
                     {status.map((statu) => (
@@ -52,7 +52,6 @@ function Product({hidden, url, titule, metodo}){
             label="Name Product"
             className="max-w-xs mb-4"
             placeholder="Name example"
-            variant="bordered"
             />
             <Input
             isRequired
@@ -61,7 +60,6 @@ function Product({hidden, url, titule, metodo}){
             label="Serial Product"
             className="max-w-xs mb-4"
             placeholder="123ABC456DEF"
-            variant="bordered"
             />
             <Input
             isRequired
@@ -71,7 +69,6 @@ function Product({hidden, url, titule, metodo}){
             label="Price Product"
             className="max-w-xs mb-4"
             placeholder="123"
-            variant="bordered"
             />
             
         

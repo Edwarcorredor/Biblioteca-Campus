@@ -1,7 +1,7 @@
 import { Input, Button, Select, SelectItem } from "@nextui-org/react";
 import handleSubmit from "../../services/peticionFetch.js";
 // eslint-disable-next-line react/prop-types
-function Loan({hidden, url, titule, metodo}){
+function Loan({hidden, url, title, metodo}){
 
     const status = [
         { label: "Active", value: "active" },
@@ -14,7 +14,7 @@ function Loan({hidden, url, titule, metodo}){
         <form className="flex flex-col justify-center items-center"
         onSubmit={(event) => handleSubmit(event, url, metodo)}>
             <h1 className="text-4xl font-extrabold text-center mb-6">
-                {titule}
+                {title}
             </h1>
 
             {hidden ? 
@@ -27,14 +27,14 @@ function Loan({hidden, url, titule, metodo}){
                     label="Id"
                     className="max-w-xs mb-4"
                     placeholder="123"
-                    variant="bordered"
+    
                     />
                     <Select
                     isRequired
                     label="Status"
                     name="status_loan"
                     placeholder="Select a status"
-                    variant="bordered"
+    
                     className="max-w-xs mb-4"
                     >
                     {status.map((statu) => (
@@ -53,7 +53,6 @@ function Loan({hidden, url, titule, metodo}){
             label="Id User"
             className="max-w-xs mb-4"
             placeholder="123"
-            variant="bordered"
             />
             <Input
             type="number"
@@ -61,7 +60,6 @@ function Loan({hidden, url, titule, metodo}){
             label="Id Reservation"
             className="max-w-xs mb-4"
             placeholder="123"
-            variant="bordered"
             />
             <Input
             isRequired
@@ -70,7 +68,6 @@ function Loan({hidden, url, titule, metodo}){
             label="Id Products"
             className="max-w-xs mb-4"
             placeholder="1, 2, 3"
-            variant="bordered"
             />
             <Input
             isRequired
@@ -78,7 +75,6 @@ function Loan({hidden, url, titule, metodo}){
             name="dateStart_loan"
             label="Date Start Loan"
             className="max-w-xs mb-4"
-            variant="bordered"
             />
             <Input
             isRequired
@@ -86,9 +82,8 @@ function Loan({hidden, url, titule, metodo}){
             name="dateEnd_loan"
             label="Date End Loan"
             className="max-w-xs mb-4"
-            variant="bordered"
             />
-            <Button color="primary" variant="shadow" type="submit">
+            <Button color="primary" variant="shadow" type="submit" className="mb-10">
             Save
             </Button>
 

@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-const handleSubmit = (event, url) => {
+const handleSubmit = (event, url, navigate) => {
     event.preventDefault();
     const query = Object.fromEntries(new window.FormData(event.target));
     fetch(url, {
@@ -20,8 +20,12 @@ const handleSubmit = (event, url) => {
         if(responseData.JWT){
           // Guardar un token de autenticación en una cookie
           const authToken = responseData.JWT;
-          Cookies.set('authToken', authToken, { expires: 1 }); // 'authToken' es el nombre de la cookie
+          const role = responseData.role;
+          Cookies.set('authToken', authToken, { expires: 1 });
+          Cookies.set('role', role, { expires: 1 }); // 'authToken' es el nombre de la cookie
+        return navigate("/admin"); 
         }
+        navigate("/");
       })
       .catch((error) => {
         console.error("Error:", error);

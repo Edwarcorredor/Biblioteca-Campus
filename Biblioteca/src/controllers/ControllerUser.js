@@ -13,7 +13,7 @@ class ControllerUser {
           throw new Error(user);
         }    
         const token = await crearToken(user);
-        res.status(200).json({ JWT:token, Info:"Usuario logueado correctamente." });
+        res.status(200).json({ JWT:token, role: user.role });
     } catch (err) {
       console.log(err.message);
       res.status(400).json({ error: err.message });

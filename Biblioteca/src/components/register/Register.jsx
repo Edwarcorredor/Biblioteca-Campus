@@ -3,7 +3,7 @@ import { Input, Button, Select, SelectItem } from "@nextui-org/react";
 import { EyeFilledIcon } from "../login/EyeFilledIcon.jsx";
 import { EyeSlashFilledIcon } from "../login/EyeSlashFilledIcon.jsx";
 import handleSubmit from "../../services/peticionFetchUser.js";
-
+import { useNavigate } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
 export default function Register({url}) {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,12 +15,12 @@ export default function Register({url}) {
     { label: "User", value: "user" },
   ];
 
-
+  const navigate = useNavigate();
 
   return (
     <form
       className="flex flex-col justify-center items-center "
-      onSubmit={(event) => {handleSubmit(event, url)}}
+      onSubmit={(event) => {handleSubmit(event, url, navigate)}}
     >
       <h1 className="text-4xl font-extrabold text-center mb-6">
         Register User

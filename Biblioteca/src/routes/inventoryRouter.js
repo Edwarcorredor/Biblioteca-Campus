@@ -4,7 +4,7 @@ import { Router } from "express";
 const inventoryRouter = Router();
 
 inventoryRouter
-    .post('/crear', ControllerInventory.insertInventory)
-    .put('/actualizar/:id', ControllerInventory.updateInventory)
+    .post('/create', ControllerInventory.insertInventory)
+    .put('/update/:id', ControllerInventory.updateInventory)
 
 export default inventoryRouter;

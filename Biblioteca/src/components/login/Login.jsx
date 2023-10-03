@@ -3,23 +3,23 @@ import { EyeFilledIcon } from "./EyeFilledIcon.jsx";
 import { EyeSlashFilledIcon } from "./EyeSlashFilledIcon.jsx";
 import  useLogin  from "../../hooks/useLogin.js";
 import handleSubmit from "../../services/peticionFetchUser.js";
-
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 export default function Login({url}) {
-    const {
-      setEmail,
-      isVisible,
-      toggleVisibility,
-      isInvalid,
-    } = useLogin();
-  
-    
+  const {
+    setEmail,
+    isVisible,
+    toggleVisibility,
+    isInvalid,
+  } = useLogin();
+
+  const navigate = useNavigate();
 
   return (
     <form
       className="flex flex-col justify-center items-center h-screen"
-      onSubmit={(event) => handleSubmit(event, url)}
+      onSubmit={(event) => handleSubmit(event, url, navigate)}
     >
       <h1 className="text-4xl font-extrabold text-center mb-6">
         Login User

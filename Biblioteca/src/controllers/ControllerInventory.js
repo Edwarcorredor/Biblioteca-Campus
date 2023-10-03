@@ -51,6 +51,11 @@ class ControllerInventory{
         const results = await Model.updateInventory(id, transformData);
         res.json(results); 
     }
+
+    static async getInventory(req, res){
+      const name = req.query.name;
+      
+    }
 }
 
 export default ControllerInventory;

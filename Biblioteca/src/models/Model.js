@@ -144,6 +144,15 @@ export default class Model {
         }
     }
 
+    static async getInventory(name){
+        try{
+            const inventoryGet = await Inventory.find({ name: { $regex: name, $options: 'i' } });
+            return inventoryGet;
+        }catch(error){
+            return error
+        }
+    }
+
     static async insertProduct(datos){
         try{
             const productInsert = await Products.insertOne({

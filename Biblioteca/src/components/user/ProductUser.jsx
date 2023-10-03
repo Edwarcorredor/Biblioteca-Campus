@@ -1,6 +1,7 @@
 
 import {Image} from "@nextui-org/react";
 import '../../index.css';
+// eslint-disable-next-line react/prop-types
 function ProductUser ({photo, name}){
     return (
         <div className="m-8">

@@ -52,10 +52,10 @@ class ControllerInventory{
         res.json(results); 
     }
 
-    static async getInventory(req, res){
+    /* static async getInventory(req, res){
       const name = req.query.name;
-      
-    }
+
+    } */
 }
 
 export default ControllerInventory;

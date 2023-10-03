@@ -1,31 +1,20 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
-import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Logo } from "./components/home/Logo";
 import Cookies from 'js-cookie';
 
 export default function AppAdmin() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const [HScreen, setHScreen] = useState(true); // Inicialmente, aplicamos la clase h-screen
-
-  useEffect(() => {
-    // Verificamos si el pathname es "/admin" para aplicar la clase h-screen
-    if (location.pathname === "/admin") {
-      setHScreen(true);
-    } else {
-      setHScreen(false); // Quitamos la clase h-screen
-    }
-  }, [location.pathname]);
-
+ 
   return (
-    <div className={HScreen ? "h-screen" : ""}>
-      <Navbar>
+    <div className="h-screen">
+      <Navbar className="mb-6">
         <NavbarBrand>
           <Logo />
           <p className="font-bold text-inherit">Biblioteca</p>
         </NavbarBrand>   
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarItem>
           <Dropdown>
             <DropdownTrigger>
               <Button 
@@ -42,6 +31,8 @@ export default function AppAdmin() {
               <DropdownItem key="product/update">Update</DropdownItem>
             </DropdownMenu>
           </Dropdown>
+        </NavbarItem>
+        <NavbarItem> 
           <Dropdown>
             <DropdownTrigger>
               <Button 
@@ -58,6 +49,8 @@ export default function AppAdmin() {
               <DropdownItem key="inventory/update">Update</DropdownItem>
             </DropdownMenu>
           </Dropdown>
+        </NavbarItem>
+        <NavbarItem>  
           <Dropdown>
             <DropdownTrigger>
               <Button 
@@ -74,6 +67,7 @@ export default function AppAdmin() {
               <DropdownItem key="loan/update">Update</DropdownItem>
             </DropdownMenu>
           </Dropdown>
+        </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem>

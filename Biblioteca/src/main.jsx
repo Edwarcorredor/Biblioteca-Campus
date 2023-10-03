@@ -11,7 +11,7 @@ import Loan from './components/loan/Loan.jsx';
 import { NextUIProvider } from '@nextui-org/react';
 import './index.css';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute.jsx';
-
+import AppUser from './AppUser.jsx';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +56,10 @@ const router = createBrowserRouter([
       },
       
     ],
+  },
+  {
+    path: '/user',
+    element: <ProtectedRoute component={AppUser} role="admin"/>
   },
 ]);
 

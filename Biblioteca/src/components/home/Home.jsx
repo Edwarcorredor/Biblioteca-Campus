@@ -22,7 +22,7 @@ export default function Home() {
           </NavbarItem>
         </NavbarContent>
       </Navbar>
-      <h1 className="text-9xl font-serif text-center">
+      <h1 className="text-9xl font-serif text-center mb-6">
         Biblioteca
       </h1>
     </div>

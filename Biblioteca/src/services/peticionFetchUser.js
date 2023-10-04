@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 
 const handleSubmit = (event, url, navigate) => {
     event.preventDefault();
+    event.reset();
     const query = Object.fromEntries(new window.FormData(event.target));
     fetch(url, {
       method: "POST",
@@ -23,7 +24,10 @@ const handleSubmit = (event, url, navigate) => {
           const role = responseData.role;
           Cookies.set('authToken', authToken, { expires: 1 });
           Cookies.set('role', role, { expires: 1 }); // 'authToken' es el nombre de la cookie
-        return navigate("/admin"); 
+          if(role == "admin"){
+            return  navigate("/admin"); 
+          }
+        return navigate("/user"); 
         }
         navigate("/");
       })

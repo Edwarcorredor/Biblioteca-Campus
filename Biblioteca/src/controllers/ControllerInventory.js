@@ -52,10 +52,12 @@ class ControllerInventory{
         res.json(results); 
     }
 
-    /* static async getInventory(req, res){
+     static async getInventory(req, res){
       const name = req.query.name;
-
-    } */
+      const offset = parseInt(req.query.offset);
+      const results = await Model.getInventory(name, offset);
+      res.json(results);
+    } 
 }
 
 export default ControllerInventory;

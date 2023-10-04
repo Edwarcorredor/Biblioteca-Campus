@@ -8,10 +8,10 @@ import handleSubmit from "./services/peticionFetchProduct.js";
 
 export default function AppUser() {
 
-  const [products, setProducts] = useState({});
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.10.10.10:5030/inventory/obtener", {
+    fetch("http://127.10.10.10:5030/inventory/list?name", {
       headers: {
         "Authorization": "Bearer " + Cookies.get("authToken")
       },
@@ -28,9 +28,9 @@ export default function AppUser() {
           <p className="font-bold text-inherit">Biblioteca</p>
         </NavbarBrand>   
         <NavbarContent justify="center">
-          <form className="hidden sm:flex gap-4" onSubmit={(e)=> handleSubmit(e)}>
+          <form className="hidden sm:flex gap-4" onSubmit={(e)=> handleSubmit(e, setProducts)}>
           <NavbarItem>
-            <Input type="text" placeholder="Search" />
+            <Input type="text" placeholder="Search" name="" />
           </NavbarItem>
           <NavbarItem>
           <Button color="success"  variant="flat" type="submit">

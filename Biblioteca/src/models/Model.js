@@ -144,9 +144,12 @@ export default class Model {
         }
     }
 
-    static async getInventory(name){
+    static async getInventory(nombre, offset){
         try{
-            const inventoryGet = await Inventory.find({ name: { $regex: name, $options: 'i' } });
+            const inventoryGet = await Inventory.find({ name: { $regex: nombre, $options: 'i' } })
+            .skip(offset) // Salta los primeros "offset" documentos
+            .limit(10)
+            .toArray();
             return inventoryGet;
         }catch(error){
             return error

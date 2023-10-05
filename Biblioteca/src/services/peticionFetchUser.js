@@ -2,7 +2,6 @@ import Cookies from 'js-cookie';
 
 const handleSubmit = (event, url, navigate) => {
     event.preventDefault();
-    event.reset();
     const query = Object.fromEntries(new window.FormData(event.target));
     fetch(url, {
       method: "POST",

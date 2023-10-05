@@ -194,3 +194,117 @@ db.counters.insertMany([
   {_id: "products", seq: 0 },
 ]);
 
+use("library_Edwar_Corredor");
+db.inventory.insertMany([
+  {
+    "name": "Carro 1",
+    "serial": "ABC123",
+    "stock": 10,
+    "description": "Descripción del Carro 1",
+    "status": "In stock",
+    "entryDate": new Date("2023-10-01"),
+    "supplier": "Proveedor 1",
+    "quantity": 5,
+    "image": "https://www.motor.com.co/__export/1651004329036/sites/motor/img/2022/04/26/20220426_021848838_60f1d0133366b_r_1626460411031_420-517-1528-1071.jpeg_759710130.jpeg"
+  },
+  {
+    "name": "Moto 2",
+    "serial": "DEF456",
+    "stock": 15,
+    "description": "Descripción de la Moto 2",
+    "status": "In stock",
+    "entryDate": new Date("2023-10-02"),
+    "supplier": "Proveedor 2",
+    "quantity": 7,
+    "image": "https://www.motor.com.co/__export/1651004329036/sites/motor/img/2022/04/26/20220426_021848838_60f1d0133366b_r_1626460411031_420-517-1528-1071.jpeg_759710130.jpeg"
+  },
+  {
+    "name": "Camisa 3",
+    "serial": "GHI789",
+    "stock": 20,
+    "description": "Descripción de la Camisa 3",
+    "status": "Out of stock",
+    "entryDate": new Date("2023-10-03"),
+    "supplier": "Proveedor 3",
+    "quantity": 0,
+    "image": "https://www.motor.com.co/__export/1651004329036/sites/motor/img/2022/04/26/20220426_021848838_60f1d0133366b_r_1626460411031_420-517-1528-1071.jpeg_759710130.jpeg"
+  },
+  {
+    "name": "Carro 4",
+    "serial": "JKL101",
+    "stock": 8,
+    "description": "Descripción del Carro 4",
+    "status": "In stock",
+    "entryDate": new Date("2023-10-04"),
+    "supplier": "Proveedor 1",
+    "quantity": 3,
+    "image": "https://www.motor.com.co/__export/1651004329036/sites/motor/img/2022/04/26/20220426_021848838_60f1d0133366b_r_1626460411031_420-517-1528-1071.jpeg_759710130.jpeg"
+  },
+  {
+    "name": "Moto 5",
+    "serial": "MNO111",
+    "stock": 12,
+    "description": "Descripción de la Moto 5",
+    "status": "In stock",
+    "entryDate": new Date("2023-10-05"),
+    "supplier": "Proveedor 2",
+    "quantity": 6,
+    "image": "https://www.motor.com.co/__export/1651004329036/sites/motor/img/2022/04/26/20220426_021848838_60f1d0133366b_r_1626460411031_420-517-1528-1071.jpeg_759710130.jpeg"
+  },
+  {
+    "name": "Camisa 6",
+    "serial": "PQR121",
+    "stock": 18,
+    "description": "Descripción de la Camisa 6",
+    "status": "Out of stock",
+    "entryDate": new Date("2023-10-06"),
+    "supplier": "Proveedor 3",
+    "quantity": 0,
+    "image": "https://www.motor.com.co/__export/1651004329036/sites/motor/img/2022/04/26/20220426_021848838_60f1d0133366b_r_1626460411031_420-517-1528-1071.jpeg_759710130.jpeg"
+  },
+  {
+    "name": "Carro 7",
+    "serial": "STU131",
+    "stock": 9,
+    "description": "Descripción del Carro 7",
+    "status": "In stock",
+    "entryDate": new Date("2023-10-07"),
+    "supplier": "Proveedor 1",
+    "quantity": 4,
+    "image": "https://www.motor.com.co/__export/1651004329036/sites/motor/img/2022/04/26/20220426_021848838_60f1d0133366b_r_1626460411031_420-517-1528-1071.jpeg_759710130.jpeg"
+  },
+  {
+    "name": "Moto 8",
+    "serial": "VWX141",
+    "stock": 14,
+    "description": "Descripción de la Moto 8",
+    "status": "In stock",
+    "entryDate": new Date("2023-10-08"),
+    "supplier": "Proveedor 2",
+    "quantity": 7,
+    "image": "https://www.motor.com.co/__export/1651004329036/sites/motor/img/2022/04/26/20220426_021848838_60f1d0133366b_r_1626460411031_420-517-1528-1071.jpeg_759710130.jpeg"
+  },
+  {
+    "name": "Camisa 9",
+    "serial": "YZA151",
+    "stock": 19,
+    "description": "Descripción de la Camisa 9",
+    "status": "Out of stock",
+    "entryDate": new Date("2023-10-09"),
+    "supplier": "Proveedor 3",
+    "quantity": 0,
+    "image": "https://www.motor.com.co/__export/1651004329036/sites/motor/img/2022/04/26/20220426_021848838_60f1d0133366b_r_1626460411031_420-517-1528-1071.jpeg_759710130.jpeg"
+  },
+  {
+    "name": "Carro 10",
+    "serial": "BCD161",
+    "stock": 7,
+    "description": "Descripción del Carro 10",
+    "status": "In stock",
+    "entryDate": new Date("2023-10-10"),
+    "supplier": "Proveedor 1",
+    "quantity": 2,
+    "image": "https://www.motor.com.co/__export/1651004329036/sites/motor/img/2022/04/26/20220426_021848838_60f1d0133366b_r_1626460411031_420-517-1528-1071.jpeg_759710130.jpeg"
+  },
+]);
+

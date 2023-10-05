@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import handleSubmit from "./services/peticionFetchProduct.js";
 
 export default function AppUser() {
-
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -21,39 +20,41 @@ export default function AppUser() {
   }, []); 
 
   return (
-    <div className="h-screen">
+    <div className="min-h-screen ">
       <Navbar>
         <NavbarBrand>
           <Logo />
           <p className="font-bold text-inherit">Biblioteca</p>
         </NavbarBrand>   
         <NavbarContent justify="center">
-          <form className="hidden sm:flex gap-4" onSubmit={(e)=> handleSubmit(e, setProducts)}>
-          <NavbarItem>
-            <Input type="text" placeholder="Search" name="" />
-          </NavbarItem>
-          <NavbarItem>
-          <Button color="success"  variant="flat" type="submit">
-            🔍
-          </Button>
-          </NavbarItem>
+          <form className="sm:flex gap-4" onSubmit={(e)=> handleSubmit(e, setProducts)}>
+            <NavbarItem>
+              <Input type="text" placeholder="Search" name="" />
+            </NavbarItem>
+            <NavbarItem>
+              <Button color="success" variant="flat" type="submit">
+                🔍
+              </Button>
+            </NavbarItem>
           </form>
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem>
-            <Button color="danger"  variant="flat" onClick={()=>Cookies.remove('authToken', 'role')}>
-            <Link to ="/">Log Out</Link>  
+            <Button color="danger" variant="flat" onClick={()=>{Cookies.remove('authToken'); Cookies.remove('role');}}>
+              <Link to ="/">Log Out</Link>  
             </Button>
           </NavbarItem>
         </NavbarContent>
       </Navbar>
-      {products.map((product) => (
-        <ProductUser
-          key={product._id}
-          name={product.name}
-          photo={product.image}
-        />
-      ))}
+      <div className="container mx-auto p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {products.map((product) => (
+            <div key={product._id}>
+              <ProductUser name={product.name} photo={product.image} />
+            </div>
+          ))}
+        </div>
+      </div>
     </div> 
   );
 }

@@ -6,7 +6,7 @@ function ProductUser ({photo, name}){
     return (
         <div className="m-8">
             <Image
-            width={200}
+            width={300}
             alt={name}
             src={photo}
             onClick={()=> alert("Tocado")}

@@ -7,7 +7,7 @@ export default function AppAdmin() {
   const navigate = useNavigate();
  
   return (
-    <div className="h-screen">
+    <div>
       <Navbar className="mb-6">
         <NavbarBrand>
           <Logo />

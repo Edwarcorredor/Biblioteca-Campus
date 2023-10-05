@@ -19,7 +19,7 @@ export default function Register({url}) {
 
   return (
     <form
-      className="flex flex-col justify-center items-center h-screen"
+      className="flex flex-col justify-center items-center min-h-screen md:w-1/2 lg:w-1/3 xl:w-1/4 mx-auto"
       onSubmit={(event) => {handleSubmit(event, url, navigate)}}
     >
       <h1 className="text-4xl font-extrabold text-center mb-6">

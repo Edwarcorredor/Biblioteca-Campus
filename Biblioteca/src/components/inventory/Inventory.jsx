@@ -10,7 +10,7 @@ function Inventory({hidden, url, title, metodo}){
 
     return(
 
-        <form className="flex flex-col justify-center items-center"
+        <form className="flex flex-col justify-center items-center min-h-screen"
         onSubmit={(event) => handleSubmit(event, url, metodo)}>
             <h1 className="text-4xl font-extrabold text-center mb-6">
                 {title}

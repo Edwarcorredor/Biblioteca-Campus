@@ -26,7 +26,6 @@ function Product({hidden, url, title, metodo}){
                     label="Id"
                     className="max-w-xs mb-4"
                     placeholder="123"
-    
                     />
                     <Select
                     isRequired

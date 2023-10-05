@@ -17,8 +17,8 @@ const mapping = {
         status_loan: "status"
     },
     reservations:{
-        id_user: "userId",
-        id_product: "productId",
+
+        name_product: "nameProduct",
         date_reservation: "reservationDate",
         status_loan: "status",
         quantity_loan: "quantity"

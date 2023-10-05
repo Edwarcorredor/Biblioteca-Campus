@@ -103,7 +103,7 @@ export default class Model {
     static async insertReservation(datos){
         try{
             const reservationInsert = await Reservations.insertOne({
-                _id: await getNextSequenceValue(db, "reservations"),
+                _id: await getNextSequenceValue(db, "reservation"),
                 ...datos
             })
             return reservationInsert

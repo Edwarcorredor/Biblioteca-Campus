@@ -24,7 +24,6 @@ const LoanSchema = z.object({
 
 const ReservationSchema = z.object({
 
-  id_user: z.number().int().min(1),
   name_product: z.string(),
   date_reservation: z.date(),
   status_loan: z.enum(["pending", "confirmed", "canceled"]),

@@ -13,6 +13,7 @@ import './index.css';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute.jsx';
 import AppUser from './AppUser.jsx';
 
+const urlBackend = "http://127.10.10.10:5030";
 const router = createBrowserRouter([
   {
     path: '/',
@@ -20,11 +21,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <Login url="http://127.10.10.10:5030/auth/login" />,
+    element: <Login url={`${urlBackend}/auth/login`} />,
   },
   {
     path: '/register',
-    element: <Register url="http://127.10.10.10:5030/auth/register" />,
+    element: <Register url={`${urlBackend}/auth/register`} />,
   },
   {
     path: '/admin',
@@ -32,27 +33,27 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'product/create',
-        element: <ProtectedRoute component={Product} role="admin" url="http://127.10.10.10:5030/product/create" title="Create Product" method="POST" />,
+        element: <ProtectedRoute component={Product} role="admin" url={`${urlBackend}/product/create`} title="Create Product" method="POST" />,
       },
       {
         path: 'product/update',
-        element: <ProtectedRoute component={Product} role="admin" hidden  url="http://127.10.10.10:5030/product/update" title="Update Product" method="PUT" />,
+        element: <ProtectedRoute component={Product} role="admin" hidden  url={`${urlBackend}/product/update`} title="Update Product" method="PUT" />,
       },
       {
         path: 'inventory/create',
-        element: <ProtectedRoute component={Inventory} role="admin" url="http://127.10.10.10:5030/inventory/create" title="Create Inventory" method="POST" />,
+        element: <ProtectedRoute component={Inventory} role="admin" url={`${urlBackend}/inventory/create`} title="Create Inventory" method="POST" />,
       },
       {
         path: 'inventory/update',
-        element: <ProtectedRoute component={Inventory} role="admin" hidden url="http://127.10.10.10:5030/inventory/update" title="Update Inventory" method="PUT" />,
+        element: <ProtectedRoute component={Inventory} role="admin" hidden url={`${urlBackend}/inventory/update`} title="Update Inventory" method="PUT" />,
       },
       {
         path: 'loan/create',
-        element: <ProtectedRoute component={Loan} role="admin" url="http://127.10.10.10:5030/loan/create" title="Create Loan" method="POST" />,
+        element: <ProtectedRoute component={Loan} role="admin" url={`${urlBackend}/loan/create`} title="Create Loan" method="POST" />,
       },
       {
         path: 'loan/update',
-        element: <ProtectedRoute component={Loan} role="admin" hidden url="http://127.10.10.10:5030/loan/update" title="Update Loan" method="PUT" />,
+        element: <ProtectedRoute component={Loan} role="admin" hidden url={`${urlBackend}/loan/update`} title="Update Loan" method="PUT" />,
       },
       
     ],

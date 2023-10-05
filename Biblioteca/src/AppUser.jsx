@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import { Logo } from "./components/home/Logo";
 import Cookies from 'js-cookie';
 import { useState, useEffect } from "react";
+import Reservation from "./components/reservation/Reservation";
 import handleSubmit from "./services/peticionFetchProduct.js";
 
 export default function AppUser() {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
-
+  
+  
   useEffect(() => {
     fetch("http://127.10.10.10:5030/inventory/list?name", {
       headers: {
@@ -25,6 +27,8 @@ export default function AppUser() {
     onOpen();
   };
 
+  console.log(products);
+
   return (
     <div className="min-h-screen ">
       <Navbar>
@@ -35,7 +39,7 @@ export default function AppUser() {
         <NavbarContent justify="center">
           <form className="sm:flex gap-4" onSubmit={(e)=> handleSubmit(e, setProducts)}>
             <NavbarItem>
-              <Input type="text" placeholder="Search" name="" />
+              <Input type="text" placeholder="Search" name="name_product"  />
             </NavbarItem>
             <NavbarItem>
               <Button color="success" variant="flat" type="submit">
@@ -69,32 +73,34 @@ export default function AppUser() {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">{selectedProduct.name}</ModalHeader>
               <ModalBody>
-                <p> 
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam pulvinar risus non risus hendrerit venenatis.
-                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam pulvinar risus non risus hendrerit venenatis.
-                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                </p>
-                <p>
-                  Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit
-                  dolor adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. 
-                  Velit duis sit officia eiusmod Lorem aliqua enim laboris do dolor eiusmod. 
-                  Et mollit incididunt nisi consectetur esse laborum eiusmod pariatur 
-                  proident Lorem eiusmod et. Culpa deserunt nostrud ad veniam.
-                </p>
+                <div className="flex">
+                  {/* Parte izquierda (Imagen y Descripción) */}
+                  <div className="w-1/2 pr-4">
+                    <Image
+                      width={300}
+                      alt={selectedProduct.name}
+                      src={selectedProduct.image}
+                    />
+                    <p className="mt-4">
+                      {selectedProduct.description}
+                    </p>
+                  </div>
+                  
+                  {/* Parte derecha (Formulario) */}
+                  <div className="w-1/2 pl-4">
+                    <Reservation
+                      name_product={selectedProduct.name}
+                      max={selectedProduct.quantity}
+                      close={onClose}
+                    />
+                  </div>
+                </div>
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
                   Close
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Action
                 </Button>
               </ModalFooter>
             </>

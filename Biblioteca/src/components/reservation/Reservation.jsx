@@ -5,7 +5,7 @@ function Reservation({ name_product, max, close}){
 
     return(
         <form className="flex flex-col justify-center items-center" onSubmit={(e) => {
-            handleSubmit(e, "http://127.10.10.10:5030/reservation/create", "POST")
+            handleSubmit(e, "http://192.168.129.72:5210/reservation/create", "POST", close)
         }}>
             <Input
                 isReadOnly
@@ -30,7 +30,7 @@ function Reservation({ name_product, max, close}){
                 label="Quantity Product"
                 className="max-w-xs mb-4"
             />
-            <Button color="primary" variant="shadow" type="submit" onClick={close}>
+            <Button color="primary" variant="shadow" type="submit">
                 Reserve
             </Button>
             

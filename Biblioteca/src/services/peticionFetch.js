@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-const handleSubmit = (event, url, metodo) => {
+const handleSubmit = (event, url, metodo, close) => {
     event.preventDefault();
     const query = Object.fromEntries(new window.FormData(event.target));
     event.target.reset();
@@ -24,6 +24,8 @@ const handleSubmit = (event, url, metodo) => {
       })
       .then((responseData) => {
         console.log(responseData);
+        event.target.reset();
+        close();
         
       })
       .catch((error) => {

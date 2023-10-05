@@ -13,7 +13,7 @@ import './index.css';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute.jsx';
 import AppUser from './AppUser.jsx';
 
-const urlBackend = "http://127.10.10.10:5030";
+const urlBackend = "http://192.168.129.72:5210";
 const router = createBrowserRouter([
   {
     path: '/',

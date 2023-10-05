@@ -5,7 +5,7 @@ const handleSubmit = (event, setProducts, offset) => {
     event.target.reset();
     const name_product = query.name_product;
     console.log(name_product);
-    const url = `http://127.10.10.10:5030/inventory/list?name=${name_product}&offset=${offset}`
+    const url = `http://192.168.129.72:5210/inventory/list?name=${name_product}&offset=${offset}`
     fetch(url, {
       method: "GET",
       headers: {

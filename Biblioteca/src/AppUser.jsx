@@ -13,7 +13,7 @@ export default function AppUser() {
   const [search, setSearch] = useState("");
 
   const fetchProducts = () => {
-    fetch(`http://127.10.10.10:5030/inventory/list?name=${search}&offset=${offset}`, {
+    fetch(`http://192.168.129.72:5210/inventory/list?name=${search}&offset=${offset}`, {
       headers: {
         Authorization: "Bearer " + Cookies.get("authToken"),
       },

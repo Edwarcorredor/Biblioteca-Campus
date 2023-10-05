@@ -25,7 +25,9 @@ const handleSubmit = (event, url, metodo, close) => {
       .then((responseData) => {
         console.log(responseData);
         event.target.reset();
-        close();
+        if(close){
+          close();
+        }
         
       })
       .catch((error) => {

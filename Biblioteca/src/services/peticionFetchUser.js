@@ -17,6 +17,7 @@ const handleSubmit = (event, url, navigate) => {
         return response.json();
       })
       .then((responseData) => {
+        console.log(responseData)
         if(responseData.JWT){
           // Guardar un token de autenticación en una cookie
           const authToken = responseData.JWT;

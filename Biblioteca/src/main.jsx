@@ -33,27 +33,27 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'product/create',
-        element: <ProtectedRoute component={Product} role="admin" url={`${urlBackend}/product/create`} title="Create Product" method="POST" />,
+        element: <ProtectedRoute component={Product} role="admin" url={`${urlBackend}/product/create`} title="Create Product" metodo="POST" />,
       },
       {
         path: 'product/update',
-        element: <ProtectedRoute component={Product} role="admin" hidden  url={`${urlBackend}/product/update`} title="Update Product" method="PUT" />,
+        element: <ProtectedRoute component={Product} role="admin" hidden  url={`${urlBackend}/product/update`} title="Update Product" metodo="PUT" />,
       },
       {
         path: 'inventory/create',
-        element: <ProtectedRoute component={Inventory} role="admin" url={`${urlBackend}/inventory/create`} title="Create Inventory" method="POST" />,
+        element: <ProtectedRoute component={Inventory} role="admin" url={`${urlBackend}/inventory/create`} title="Create Inventory" metodo="POST" />,
       },
       {
         path: 'inventory/update',
-        element: <ProtectedRoute component={Inventory} role="admin" hidden url={`${urlBackend}/inventory/update`} title="Update Inventory" method="PUT" />,
+        element: <ProtectedRoute component={Inventory} role="admin" hidden url={`${urlBackend}/inventory/update`} title="Update Inventory" metodo="PUT" />,
       },
       {
         path: 'loan/create',
-        element: <ProtectedRoute component={Loan} role="admin" url={`${urlBackend}/loan/create`} title="Create Loan" method="POST" />,
+        element: <ProtectedRoute component={Loan} role="admin" url={`${urlBackend}/loan/create`} title="Create Loan" metodo="POST" />,
       },
       {
         path: 'loan/update',
-        element: <ProtectedRoute component={Loan} role="admin" hidden url={`${urlBackend}/loan/update`} title="Update Loan" method="PUT" />,
+        element: <ProtectedRoute component={Loan} role="admin" hidden url={`${urlBackend}/loan/update`} title="Update Loan" metodo="PUT" />,
       },
       
     ],

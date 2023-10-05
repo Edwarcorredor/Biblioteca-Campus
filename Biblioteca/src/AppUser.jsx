@@ -72,7 +72,7 @@ export default function AppUser() {
                 Cookies.remove('role');
               }}
             >
-              <Link to="/logout">Log Out</Link>
+              <Link to="/">Log Out</Link>
             </Button>
           </NavbarItem>
         </NavbarContent>

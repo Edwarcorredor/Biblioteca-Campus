@@ -3,7 +3,6 @@ import Cookies from 'js-cookie';
 const handleSubmit = (event, url, metodo) => {
     event.preventDefault();
     const query = Object.fromEntries(new window.FormData(event.target));
-    console.log(query);
     event.target.reset();
     if(metodo == "PUT"){
       url = `${url}/${query.ID}`;

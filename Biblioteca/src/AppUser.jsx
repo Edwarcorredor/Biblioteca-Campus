@@ -24,6 +24,7 @@ export default function AppUser() {
 
   useEffect(() => {
     fetchProducts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset, search]);
 
   const handleSubmitSearch = (e) => {

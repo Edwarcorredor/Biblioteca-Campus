@@ -1,11 +1,11 @@
 import Cookies from "js-cookie";
-const handleSubmit = (event, setProducts) => {
+const handleSubmit = (event, setProducts, offset) => {
     event.preventDefault();
     const query = Object.fromEntries(new window.FormData(event.target));
     event.target.reset();
     const name_product = query.name_product;
     console.log(name_product);
-    const url = `http://127.10.10.10:5030/inventory/list?name=${name_product}`
+    const url = `http://127.10.10.10:5030/inventory/list?name=${name_product}&offset=${offset}`
     fetch(url, {
       method: "GET",
       headers: {
